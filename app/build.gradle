@@ -28,4 +28,8 @@ dependencies { //as3.0没有依赖性传递;
     implementation project(':Generalec_EC')
     annotationProcessor project(':General_compiler')
     implementation project(':General_core')
+
+    //Fragment依赖
+    implementation 'me.yokeyword:fragmentation:1.0.3'
+    implementation 'me.yokeyword:fragmentation-swipeback:1.0.3'
 }
