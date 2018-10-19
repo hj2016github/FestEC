@@ -37,9 +37,9 @@ public abstract class BaseDelegate extends Fragment   implements ISupportFragmen
 
     public abstract void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView); //强制子类使用,主要是butterknife要使用;
 
-    @Override
+    //@Override
     public void onAttach(Context context) {
-        super.onAttach(context);
+        super.onAttach((Activity) context);
         DELEGATE.onAttach((Activity) context);
         _mActivity = DELEGATE.getActivity();//为了让fragment能找到容器,设置全局变量;
     }
@@ -66,7 +66,7 @@ public abstract class BaseDelegate extends Fragment   implements ISupportFragmen
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView;
-        if (setLayout() instanceof Integer) { //R.id.XXX;
+        if (setLayout() instanceof Integer) { //R.id.XXX,本项目中用的是id;
             rootView = inflater.inflate((int) setLayout(), container, false);
         } else if (setLayout() instanceof View) {//直接是view的情况;
             rootView = (View) setLayout();
