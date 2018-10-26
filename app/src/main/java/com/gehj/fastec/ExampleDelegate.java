@@ -41,11 +41,12 @@ public class ExampleDelegate extends LatteDelegate {//使用的fragment;
 
     private  void testRestClient(){
         RestClient.builder().url("https://www.baidu.com")
+                .loader(getContext())
                 .params("","")
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-                        Toast.makeText(_mActivity, response, Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(_mActivity, response, Toast.LENGTH_SHORT).show();
                     }
                 })
                 .failure(new IFailure() {

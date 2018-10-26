@@ -6,6 +6,7 @@ import com.gehj.general_core.net.callback.IError;
 import com.gehj.general_core.net.callback.IFailure;
 import com.gehj.general_core.net.callback.IRequest;
 import com.gehj.general_core.net.callback.ISuccess;
+import com.gehj.general_core.ui.LoaderStyle;
 
 import java.io.File;
 import java.util.WeakHashMap;
@@ -23,7 +24,7 @@ public class RestClientBuilder {
     private IError mIError = null;
     private RequestBody mBody = null;
     private Context mContext = null;
-  //  private LoaderStyle mLoaderStyle = null;
+    private LoaderStyle mLoaderStyle = null;//加载圈;
     private File mFile = null;
     private String mDownloadDir = null;
     private String mExtension = null;
@@ -97,26 +98,25 @@ public class RestClientBuilder {
         return this;
     }
 
-    /*public final RestClientBuilder loader(Context context, LoaderStyle style) {
+    public final RestClientBuilder loader(Context context, LoaderStyle style) {
         this.mContext = context;
         this.mLoaderStyle = style;
         return this;
-    }*/
+    }
 
-    /*public final RestClientBuilder loader(Context context) {
+    public final RestClientBuilder loader(Context context) {//走默认的loader;
         this.mContext = context;
         this.mLoaderStyle = LoaderStyle.BallClipRotatePulseIndicator;
         return this;
-    }*/
+    }
 
     public final RestClient build() {
         return new RestClient(mUrl, PARAMS,
                 mDownloadDir, mExtension, mName,
                 mIRequest, mISuccess, mIFailure,
-                //mIError, mBody, mFile, mContext,
-                mIError, mBody, mFile, mContext
-                //mLoaderStyle);
-                );
+                mIError, mBody, mFile, mContext,
+                mLoaderStyle);
+
     }
 
 

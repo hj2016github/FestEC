@@ -12,7 +12,7 @@ public final class Latte {//不希望被修改;
         return Configurator.getInstance();
     }
 
-    public static Configurator init(Context context) {
+    public static Configurator init(Context context) {//在application中调用;
         getConfigurator().getLatteConfigs() //获得到map
                 .put(ConfigKeys.APPLICATION_CONTEXT, context.getApplicationContext());
         return Configurator.getInstance();

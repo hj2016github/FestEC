@@ -6,6 +6,8 @@ import android.os.Handler;
 import com.gehj.general_core.ConfigKeys;
 import com.gehj.general_core.Latte;
 import com.gehj.general_core.net.RestCreator;
+import com.gehj.general_core.ui.LatteLoader;
+import com.gehj.general_core.ui.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,16 +23,15 @@ public final class RequestCallbacks implements Callback<String> {
     private final ISuccess SUCCESS;
     private final IFailure FAILURE;
     private final IError ERROR;
-   // private final LoaderStyle LOADER_STYLE;
-   // private static final Handler HANDLER = Latte.getHandler();
+    private final LoaderStyle LOADER_STYLE;
+    private static final Handler HANDLER = Latte.getHandler();//Handler静态类型可以避免内存泄漏;
 
-    //public RequestCallbacks(IRequest request, ISuccess success, IFailure failure, IError error, LoaderStyle style) {
-    public RequestCallbacks(IRequest request, ISuccess success, IFailure failure, IError error) {
+    public RequestCallbacks(IRequest request, ISuccess success, IFailure failure, IError error, LoaderStyle style) {
         this.REQUEST = request;
         this.SUCCESS = success;
         this.FAILURE = failure;
         this.ERROR = error;
-       // this.LOADER_STYLE = style;
+        this.LOADER_STYLE = style;
     }
 
     @Override
@@ -47,7 +48,7 @@ public final class RequestCallbacks implements Callback<String> {
             }
         }
 
-       // onRequestFinish();
+         onRequestFinish();//response回调结束结束loader;
     }
 
     @Override
@@ -59,10 +60,10 @@ public final class RequestCallbacks implements Callback<String> {
             REQUEST.onRequestEnd();
         }
 
-        //onRequestFinish();
+        onRequestFinish();//response回调结束结束loader;
     }
 
-   /* private void onRequestFinish() {
+    private void onRequestFinish() {//延时加载loader;
         final long delayed = Latte.getConfiguration(ConfigKeys.LOADER_DELAYED);
         if (LOADER_STYLE != null) {
             HANDLER.postDelayed(new Runnable() {
@@ -73,5 +74,5 @@ public final class RequestCallbacks implements Callback<String> {
                 }
             }, delayed);
         }
-    }*/
+    }
 }

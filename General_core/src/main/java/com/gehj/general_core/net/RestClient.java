@@ -7,6 +7,8 @@ import com.gehj.general_core.net.callback.IFailure;
 import com.gehj.general_core.net.callback.IRequest;
 import com.gehj.general_core.net.callback.ISuccess;
 import com.gehj.general_core.net.callback.RequestCallbacks;
+import com.gehj.general_core.ui.LatteLoader;
+import com.gehj.general_core.ui.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
@@ -29,19 +31,17 @@ public class RestClient {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
-   // private final LoaderStyle LOADER_STYLE;
+    private final LoaderStyle LOADER_STYLE;//加载圈;
     private final File FILE;
     private final Context CONTEXT;
 
     RestClient(String url,
-               Map<String, Object> params,               String downloadDir,
-               String extension,               String name,
-               IRequest request,               ISuccess success,
-               IFailure failure,               IError error,
-               RequestBody body,               File file,
-               Context context
-              // LoaderStyle loaderStyle) {
-               ) {
+               Map<String, Object> params,String downloadDir,
+               String extension, String name,
+               IRequest request, ISuccess success,
+               IFailure failure,  IError error,
+               RequestBody body,  File file,
+               Context context, LoaderStyle loaderStyle) {
         this.URL = url;
         PARAMS.putAll(params);
         this.DOWNLOAD_DIR = downloadDir;
@@ -54,7 +54,7 @@ public class RestClient {
         this.BODY = body;
         this.FILE = file;
         this.CONTEXT = context;
-        //this.LOADER_STYLE = loaderStyle;
+        this.LOADER_STYLE = loaderStyle;
     }
 
     public static RestClientBuilder builder() {
@@ -69,9 +69,9 @@ public class RestClient {
             REQUEST.onRequestStart();//加载圈;
         }
 
-        /*if (LOADER_STYLE != null) {
+        if (LOADER_STYLE != null) {//请求之前进行加载;
             LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
-        }*/
+        }
 
         switch (method) {//method是枚举
             case GET:
@@ -113,9 +113,8 @@ public class RestClient {
                 REQUEST,
                 SUCCESS,
                 FAILURE,
-                ERROR
-               // ERROR,
-                //LOADER_STYLE
+                ERROR,
+                LOADER_STYLE
         );
     }
     //以下调用requst(Method);
