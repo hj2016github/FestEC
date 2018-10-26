@@ -1,7 +1,6 @@
 package com.gehj.general_core.net;
 
 
-
 import com.gehj.general_core.ConfigKeys;
 import com.gehj.general_core.Latte;
 
@@ -36,7 +35,7 @@ public final class RestCreator {
      */
     private static final class OKHttpHolder {//对OKhttp的处理;
         private static final int TIME_OUT = 60;//超时时间
-        private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
+       /* private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
         private static final ArrayList<Interceptor> INTERCEPTORS = Latte.getConfiguration(ConfigKeys.INTERCEPTOR);//OKhttp的拦截
 
         private static OkHttpClient.Builder addInterceptor() {
@@ -46,12 +45,13 @@ public final class RestCreator {
                 }
             }
             return BUILDER;
-        }
+        }*/
 
-        private static final OkHttpClient OK_HTTP_CLIENT = addInterceptor()//添加拦截;
+       // private static final OkHttpClient OK_HTTP_CLIENT = addInterceptor()//添加拦截;
+        private static final OkHttpClient OK_HTTP_CLIENT = new OkHttpClient.Builder()//添加拦截;
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .build();
-            }
+    }
 
     /**
      * 构建全局Retrofit客户端

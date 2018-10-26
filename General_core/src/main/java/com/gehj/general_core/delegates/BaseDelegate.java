@@ -37,7 +37,7 @@ public abstract class BaseDelegate extends Fragment   implements ISupportFragmen
 
     public abstract void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView); //强制子类使用,主要是butterknife要使用;
 
-    //@Override
+    @Override
     public void onAttach(Context context) {
         super.onAttach((Activity) context);
         DELEGATE.onAttach((Activity) context);

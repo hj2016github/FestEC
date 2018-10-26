@@ -6,6 +6,7 @@ import com.gehj.general_core.net.callback.IError;
 import com.gehj.general_core.net.callback.IFailure;
 import com.gehj.general_core.net.callback.IRequest;
 import com.gehj.general_core.net.callback.ISuccess;
+import com.gehj.general_core.net.callback.RequestCallbacks;
 
 import java.io.File;
 import java.util.Map;
@@ -61,20 +62,20 @@ public class RestClient {
     }
 
     private void request(HttpMethod method) {
-        final RestService service = RestCreator.getRestService();
+        final RestService service = RestCreator.getRestService();//1,静态内部内创建 2,Retrofit进行对接口代理;
         Call<String> call = null;
 
-        if (REQUEST != null) {
-            REQUEST.onRequestStart();
+        if (REQUEST != null) {//调用buidler实现接口;
+            REQUEST.onRequestStart();//加载圈;
         }
 
         /*if (LOADER_STYLE != null) {
             LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
         }*/
 
-        switch (method) {
+        switch (method) {//method是枚举
             case GET:
-                call = service.get(URL, PARAMS);
+                call = service.get(URL, PARAMS);//接口的注解方法;返回retrofit的call;
                 break;
             case POST:
                 call = service.post(URL, PARAMS);
@@ -102,27 +103,28 @@ public class RestClient {
                 break;
         }
 
-       /* if (call != null) {
-            call.enqueue(getRequestCallback());
-        }*/
+        if (call != null) {
+            call.enqueue(getRequestCallback()); //类似于okhttp的 OkhttpClient.newCall(request).enqueue(callback);
+        }
     }
 
-    /*private Callback<String> getRequestCallback() {
+    private Callback<String> getRequestCallback() {
         return new RequestCallbacks(
                 REQUEST,
                 SUCCESS,
                 FAILURE,
-                ERROR,
-                LOADER_STYLE
+                ERROR
+               // ERROR,
+                //LOADER_STYLE
         );
-    }*/
-
+    }
+    //以下调用requst(Method);
     public final void get() {
         request(HttpMethod.GET);
     }
 
     public final void post() {
-        if (BODY == null) {
+        if (BODY == null) {//没有用BODY?
             request(HttpMethod.POST);
         } else {
             if (!PARAMS.isEmpty()) {
