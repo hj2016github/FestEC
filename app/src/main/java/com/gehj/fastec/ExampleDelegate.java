@@ -41,7 +41,7 @@ public class ExampleDelegate extends LatteDelegate {//使用的fragment;
 
     private  void testRestClient(){
         RestClient.builder().url("https://www.baidu.com")
-                .loader(getContext())
+                .loader(getContext())//走的是默认的加载圈,我的加载时通过visible与invisible视图进行控制,这里是灵活的弹出;
                 .params("","")
                 .success(new ISuccess() {
                     @Override
