@@ -7,6 +7,7 @@ import com.gehj.general_core.net.callback.IFailure;
 import com.gehj.general_core.net.callback.IRequest;
 import com.gehj.general_core.net.callback.ISuccess;
 import com.gehj.general_core.net.callback.RequestCallbacks;
+import com.gehj.general_core.net.download.DownloadHandler;
 import com.gehj.general_core.ui.LatteLoader;
 import com.gehj.general_core.ui.LoaderStyle;
 
@@ -108,7 +109,7 @@ public class RestClient {
         }
     }
 
-    private Callback<String> getRequestCallback() {
+    private Callback<String> getRequestCallback() {//接口传值;
         return new RequestCallbacks(
                 REQUEST,
                 SUCCESS,
@@ -123,10 +124,10 @@ public class RestClient {
     }
 
     public final void post() {
-        if (BODY == null) {//没有用BODY?
+        if (BODY == null) {//post_raw需要requestBody;
             request(HttpMethod.POST);
         } else {
-            if (!PARAMS.isEmpty()) {
+            if (!PARAMS.isEmpty()) {//用BODY时PARAMS需要时空的;
                 throw new RuntimeException("params must be null!");
             }
             request(HttpMethod.POST_RAW);
@@ -152,9 +153,9 @@ public class RestClient {
         request(HttpMethod.UPLOAD);
     }
 
-    /*public final void download() {
+    public final void download() {
         new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME,
                 SUCCESS, FAILURE, ERROR)
-                .handleDownload();
-    }*/
+                .handleDownload();//作者是用异步任务(Asyntask)进行下载的;
+    }
 }

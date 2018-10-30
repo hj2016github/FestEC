@@ -68,7 +68,7 @@ public class RestClientBuilder {
         return this;
     }
 
-    public final RestClientBuilder extension(String extension) {
+    public final RestClientBuilder extension(String extension) {//后缀名;
         this.mExtension = extension;
         return this;
     }

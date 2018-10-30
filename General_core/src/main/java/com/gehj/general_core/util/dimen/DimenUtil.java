@@ -10,13 +10,15 @@ import com.gehj.general_core.Latte;
  */
 
 public final class DimenUtil {
-    static final  Resources resources = Latte.getApplicationContext().getResources();
-    public static int getScreenWidth() {//得到屏幕的宽;
+
+    public static int getScreenWidth() {
+        final Resources resources = Latte.getApplicationContext().getResources();
         final DisplayMetrics dm = resources.getDisplayMetrics();
         return dm.widthPixels;
     }
 
-    public static int getScreenHeight() {//得到屏幕的高;
+    public static int getScreenHeight() {
+        final Resources resources = Latte.getApplicationContext().getResources();
         final DisplayMetrics dm = resources.getDisplayMetrics();
         return dm.heightPixels;
     }

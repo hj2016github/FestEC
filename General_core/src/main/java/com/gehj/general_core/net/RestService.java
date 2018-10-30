@@ -45,7 +45,7 @@ public interface RestService {
     @DELETE
     Call<String> delete(@Url String url, @QueryMap WeakHashMap<String, Object> params);
 
-    @Streaming
+    @Streaming //可以防止内存溢出;
     @GET
     Call<ResponseBody> download(@Url String url, @QueryMap WeakHashMap<String, Object> params);//下载,返回值是ResponseBody
 
