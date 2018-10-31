@@ -7,7 +7,7 @@ import android.os.Handler;
  * Created by 傅令杰 on 2017/3/29
  */
 
-public final class Latte {//不希望被修改;
+public final class Latte {//final不希望被修改;
     public static Configurator getConfigurator() {
         return Configurator.getInstance();
     }

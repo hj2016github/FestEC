@@ -12,7 +12,10 @@ import com.joanzapata.iconify.Iconify;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;*/
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import okhttp3.Interceptor;
 
 //import okhttp3.Interceptor;
 
@@ -25,7 +28,7 @@ public final class Configurator {
     private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();//static final 代码名字大写;
     private static final Handler HANDLER = new Handler();
     //private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
-   // private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 	
 	/*---------单例--------*/
     private Configurator() {
@@ -80,17 +83,17 @@ public final class Configurator {
 //        return this;
 //    }
 
-//    public final Configurator withInterceptor(Interceptor interceptor) {
-//        INTERCEPTORS.add(interceptor);
-//        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
-//        return this;
-//    }
+    public final Configurator withInterceptor(Interceptor interceptor) {
+        INTERCEPTORS.add(interceptor);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
 
-//    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
-//        INTERCEPTORS.addAll(interceptors);
-//        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
-//        return this;
-//    }
+    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
+        INTERCEPTORS.addAll(interceptors);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
 
     public final Configurator withWeChatAppId(String appId) {
         LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_ID, appId);

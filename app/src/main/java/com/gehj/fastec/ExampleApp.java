@@ -4,6 +4,7 @@ import android.app.Application;
 import android.support.annotation.Nullable;
 
 import com.gehj.general_core.Latte;
+import com.gehj.general_core.net.interceptors.DebugInterceptor;
 /*import android.support.multidex.MultiDexApplication;
 
 import com.diabin.fastec.example.event.ShareEvent;
@@ -32,10 +33,10 @@ public class ExampleApp extends Application {
                 //.withIcon(new FontEcModule())
                 .withLoaderDelayed(1000)
                 .withApiHost("http://127.0.0.1")
-              //  .withInterceptor(new DebugInterceptor("test", R.raw.test))
-                .withWeChatAppId("你的微信AppKey")
-                .withWeChatAppSecret("你的微信AppSecret")
-                .withJavascriptInterface("latte")
+                .withInterceptor(new DebugInterceptor("test", R.raw.test)) //delegate的地址合起来是http://127.0.0.1/test/
+               // .withWeChatAppId("你的微信AppKey")
+               // .withWeChatAppSecret("你的微信AppSecret")
+               // .withJavascriptInterface("latte")
                // .withWebEvent("test", new TestEvent())
               //  .withWebEvent("share", new ShareEvent())
                 .configure();

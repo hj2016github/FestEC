@@ -32,4 +32,6 @@ dependencies { //as3.0没有依赖性传递;
     //Fragment依赖
     implementation 'me.yokeyword:fragmentation:1.0.3'
     implementation 'me.yokeyword:fragmentation-swipeback:1.0.3'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
 }

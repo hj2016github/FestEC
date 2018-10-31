@@ -3,6 +3,7 @@ package com.gehj.fastec;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,6 +13,8 @@ import com.gehj.general_core.net.RestClient;
 import com.gehj.general_core.net.callback.IError;
 import com.gehj.general_core.net.callback.IFailure;
 import com.gehj.general_core.net.callback.ISuccess;
+
+import static android.content.ContentValues.TAG;
 
 
 /**
@@ -40,13 +43,13 @@ public class ExampleDelegate extends LatteDelegate {//使用的fragment;
     }
 
     private  void testRestClient(){
-        RestClient.builder().url("https://www.baidu.com")
+        RestClient.builder().url("http://127.0.0.1/test")//test是Application中第一个参数,要进行拦截的地址;
                 .loader(getContext())//走的是默认的加载圈,我的加载时通过visible与invisible视图进行控制,这里是灵活的弹出;
                 .params("","")
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-                      //  Toast.makeText(_mActivity, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(_mActivity, response, Toast.LENGTH_SHORT).show();
                     }
                 })
                 .failure(new IFailure() {
