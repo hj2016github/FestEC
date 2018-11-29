@@ -22,7 +22,7 @@ import static android.content.ContentValues.TAG;
  */
 
 public class ExampleDelegate extends LatteDelegate {//使用的fragment;
-
+    /*调用的时候直接调用实现类的方法*/
     @Override
     public Object setLayout() {
         return R.layout.delegate_example;

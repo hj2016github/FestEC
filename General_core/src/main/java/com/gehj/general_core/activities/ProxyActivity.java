@@ -36,7 +36,8 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
         @SuppressLint("RestrictedApi")
         final ContentFrameLayout container = new ContentFrameLayout(this);//fragment的容器;
         container.setId(R.id.delegate_container);//设置id;
-        setContentView(container);//在代码里写view;
+        setContentView(container);
+        /*以上三行设置了xml,定义了main_layout.xml的id*/
         if (savedInstanceState == null) {//第一次加载;
             DELEGATE.loadRootFragment(R.id.delegate_container, setRootDelegate());//fragmention的方法;
         }

@@ -31,7 +31,7 @@ public abstract class BaseDelegate extends Fragment   implements ISupportFragmen
     private final SupportFragmentDelegate DELEGATE = new SupportFragmentDelegate(this);//不直接继承supportFragment;
     protected FragmentActivity _mActivity = null; //容器;
     @SuppressWarnings("SpellCheckingInspection")
-    private Unbinder mUnbinder = null; //应该是OnBinder作者拼写错误;
+    private Unbinder mUnbinder = null;
 
     public abstract Object setLayout(); //在子类中要实现具体的资源配置;
 
@@ -74,9 +74,9 @@ public abstract class BaseDelegate extends Fragment   implements ISupportFragmen
             throw new ClassCastException("type of setLayout() must be int or View!");
         }
         mUnbinder = ButterKnife.bind(this, rootView);//butterknife绑定资源;
-        onBindView(savedInstanceState, rootView);
+        onBindView(savedInstanceState, rootView);//数据绑定,点击等行为;
 
-        return rootView;
+        return rootView;//初始化fragmentview
     }
 
     public final ProxyActivity getProxyActivity() {

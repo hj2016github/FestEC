@@ -1,20 +1,13 @@
 package com.gehj.fastec;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.widget.Toast;
-
-
-import com.gehj.general_core.Latte;
 import com.gehj.general_core.activities.ProxyActivity;
 import com.gehj.general_core.delegates.LatteDelegate;
 
 
-public class ExampleActivity extends ProxyActivity
+public class ExampleActivity extends ProxyActivity{
         //  implements ISignListener,
-       // ILauncherListener
-{
+        // ILauncherListener
+
     @Override
     public LatteDelegate setRootDelegate() {
         return new ExampleDelegate();
