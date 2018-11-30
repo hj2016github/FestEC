@@ -60,7 +60,7 @@ final class SaveFileTask extends AsyncTask<Object, Void, File> {
         }
         autoInstallApk(file);
     }
-
+    //TODO: android8.0以后不同;
     private void autoInstallApk(File file) {//下载后安装apk;
         if (FileUtil.getExtension(file.getPath()).equals("apk")) {
             final Intent install = new Intent();

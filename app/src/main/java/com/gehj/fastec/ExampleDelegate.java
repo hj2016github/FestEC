@@ -46,7 +46,7 @@ public class ExampleDelegate extends LatteDelegate {//使用的fragment;
         RestClient.builder().url("http://127.0.0.1/test")//test是Application中第一个参数,要进行拦截的地址;
                 .loader(getContext())//走的是默认的加载圈,我的加载时通过visible与invisible视图进行控制,这里是灵活的弹出;
                 .params("","")
-                .success(new ISuccess() {
+                .success(new ISuccess() {//相当于handler在UI线程中的代码;
                     @Override
                     public void onSuccess(String response) {
                         Toast.makeText(_mActivity, response, Toast.LENGTH_SHORT).show();

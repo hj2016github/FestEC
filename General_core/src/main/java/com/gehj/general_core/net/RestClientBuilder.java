@@ -110,13 +110,12 @@ public class RestClientBuilder {
         return this;
     }
 
-    public final RestClient build() {
+    public final RestClient build() {//一起把参数传回restClient进行处理;
         return new RestClient(mUrl, PARAMS,
                 mDownloadDir, mExtension, mName,
                 mIRequest, mISuccess, mIFailure,
                 mIError, mBody, mFile, mContext,
                 mLoaderStyle);
-
     }
 
 

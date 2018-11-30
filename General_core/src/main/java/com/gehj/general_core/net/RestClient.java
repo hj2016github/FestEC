@@ -109,7 +109,7 @@ public class RestClient {
         }
     }
 
-    private Callback<String> getRequestCallback() {//接口传值;
+    private Callback<String> getRequestCallback() {//接口回调的传给call处理;
         return new RequestCallbacks(
                 REQUEST,
                 SUCCESS,

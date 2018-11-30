@@ -28,6 +28,7 @@ public class ExampleApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //设置全局变量;
         Latte.init(this)
                // .withIcon(new FontAwesomeModule())
                 //.withIcon(new FontEcModule())
