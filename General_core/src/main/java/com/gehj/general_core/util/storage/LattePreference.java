@@ -10,15 +10,13 @@ import com.gehj.general_core.Latte;
 /**
  * Created by 傅令杰 on 2017/4/22
  */
-//TODO:与旧项目的share进行比较;
-//TODO: 自定义等待圈,需要看源码;
 public final class LattePreference {
 
     /**
-     * 提示:
-     * Activity.getPreferences(int mode)生成 Activity名.xml 用于Activity内部存储
-     * PreferenceManager.getDefaultSharedPreferences(Context)生成 包名_preferences.xml
-     * Context.getSharedPreferences(String name,int mode)生成name.xml
+     * 提示:生成share的三种不同的方法:作者使用的是第二种种方法:
+     * 1,Activity.getPreferences(int mode)生成 Activity名.xml 用于Activity内部存储
+     * 2,PreferenceManager.getDefaultSharedPreferences(Context)生成 包名_preferences.xml
+     * 3,Context.getSharedPreferences(String name,int mode)生成name.xml
      */
     private static final SharedPreferences PREFERENCES =
             PreferenceManager.getDefaultSharedPreferences(Latte.getApplicationContext());
@@ -32,7 +30,7 @@ public final class LattePreference {
         getAppPreference()
                 .edit()
                 .putString(APP_PREFERENCES_KEY, val)
-                .apply();
+                .apply();//异步提交,提高效率;
     }
 
     public static String getAppProfile() {
