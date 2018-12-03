@@ -25,7 +25,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * BaseDelegate 就是基础fragment;
  */
 
-public abstract class BaseDelegate extends Fragment   implements ISupportFragment {
+public abstract class BaseDelegate extends Fragment  implements ISupportFragment {
 
 
     private final SupportFragmentDelegate DELEGATE = new SupportFragmentDelegate(this);//不直接继承supportFragment;

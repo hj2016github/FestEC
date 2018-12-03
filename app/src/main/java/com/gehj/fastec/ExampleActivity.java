@@ -2,6 +2,8 @@ package com.gehj.fastec;
 
 import com.gehj.general_core.activities.ProxyActivity;
 import com.gehj.general_core.delegates.LatteDelegate;
+import com.gehj.generalec_ec.launcher.LauncherDelegate;
+import com.gehj.generalec_ec.launcher.LauncherScrollDelegate;
 
 
 public class ExampleActivity extends ProxyActivity{
@@ -10,7 +12,7 @@ public class ExampleActivity extends ProxyActivity{
 
     @Override
     public LatteDelegate setRootDelegate() {
-        return new ExampleDelegate();
+        return new LauncherDelegate();
     }
    /* @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

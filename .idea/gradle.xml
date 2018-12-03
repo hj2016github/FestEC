@@ -8,10 +8,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/General_EC" />
             <option value="$PROJECT_DIR$/General_annotation" />
             <option value="$PROJECT_DIR$/General_compiler" />
             <option value="$PROJECT_DIR$/General_core" />
-            <option value="$PROJECT_DIR$/Generalec_EC" />
+            <option value="$PROJECT_DIR$/General_ui" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
