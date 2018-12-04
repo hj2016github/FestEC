@@ -1,4 +1,4 @@
-package com.gehj.general_core;
+package com.gehj.general_core.app;
 
 /**
  * Created by 傅令杰 on 2017/3/29

@@ -1,9 +1,8 @@
 package com.gehj.fastec;
 
 import android.app.Application;
-import android.support.annotation.Nullable;
 
-import com.gehj.general_core.Latte;
+import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.net.interceptors.DebugInterceptor;
 /*import android.support.multidex.MultiDexApplication;
 
@@ -16,7 +15,7 @@ import com.flj.latte.net.interceptors.DebugInterceptor;
 import com.flj.latte.util.callback.CallbackManager;
 import com.flj.latte.util.callback.CallbackType;
 import com.flj.latte.util.callback.IGlobalCallback;
-import com.gehj.general_core.Latte;
+import com.gehj.general_core.app.Latte;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 import cn.jpush.android.api.JPushInterface;*/

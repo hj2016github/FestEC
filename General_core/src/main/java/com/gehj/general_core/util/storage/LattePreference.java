@@ -5,7 +5,7 @@ import android.preference.PreferenceManager;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.gehj.general_core.Latte;
+import com.gehj.general_core.app.Latte;
 
 /**
  * Created by 傅令杰 on 2017/4/22

@@ -16,7 +16,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.TextView;
 
 
-import com.gehj.general_core.Latte;
+import com.gehj.general_core.app.Latte;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

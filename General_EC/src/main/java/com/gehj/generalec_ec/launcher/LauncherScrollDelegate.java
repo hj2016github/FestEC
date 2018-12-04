@@ -1,6 +1,5 @@
 package com.gehj.generalec_ec.launcher;
 
-import android.accounts.AccountManager;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,10 +9,15 @@ import android.widget.AdapterView;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
+import com.gehj.general_core.app.AccountManager;
+import com.gehj.general_core.app.IUserChecker;
 import com.gehj.general_core.delegates.LatteDelegate;
 import com.gehj.general_core.util.storage.LattePreference;
 import com.gehj.generalec_ec.R;
 import com.ygsj.general_ui.LauncherHolderCreator;
+import com.ygsj.general_ui.launcher.ILauncherListener;
+import com.ygsj.general_ui.launcher.OnLauncherFinishTag;
+import com.ygsj.general_ui.launcher.ScrollLauncherTag;
 
 
 import java.util.ArrayList;
@@ -27,7 +31,7 @@ public class LauncherScrollDelegate extends LatteDelegate  implements OnItemClic
 
     private ConvenientBanner<Integer> mConvenientBanner = null;//ConvenientBanner线性布局,需要传递图片;
     private static final ArrayList<Integer> INTEGERS = new ArrayList<>();//图片的list
-   // private ILauncherListener mILauncherListener = null;
+    private ILauncherListener mILauncherListener = null;
 
     private void initBanner() {
         INTEGERS.add(R.mipmap.launcher_01);
@@ -46,9 +50,9 @@ public class LauncherScrollDelegate extends LatteDelegate  implements OnItemClic
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-       /* if (activity instanceof ILauncherListener) {
+        if (activity instanceof ILauncherListener) {
             mILauncherListener = (ILauncherListener) activity;
-        }*/
+        }
     }
 
     @Override
@@ -66,8 +70,8 @@ public class LauncherScrollDelegate extends LatteDelegate  implements OnItemClic
     @Override
     public void onItemClick(int position) {
         //如果点击的是最后一个
-        /*if (position == INTEGERS.size() - 1) {
-            LattePreference.setAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name(), true);
+        if (position == INTEGERS.size() - 1) {
+            LattePreference.setAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name(), true);//说明是第一进入,以后不用进入;
             //检查用户是否已经登录
             AccountManager.checkAccount(new IUserChecker() {
                 @Override
@@ -85,6 +89,6 @@ public class LauncherScrollDelegate extends LatteDelegate  implements OnItemClic
                 }
             });
         }
-    }*/
     }
+
 }

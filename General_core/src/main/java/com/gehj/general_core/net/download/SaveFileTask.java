@@ -5,7 +5,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 
 
-import com.gehj.general_core.Latte;
+import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.net.callback.IRequest;
 import com.gehj.general_core.net.callback.ISuccess;
 import com.gehj.general_core.util.file.FileUtil;

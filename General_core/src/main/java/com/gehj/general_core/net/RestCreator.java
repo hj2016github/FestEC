@@ -1,8 +1,8 @@
 package com.gehj.general_core.net;
 
 
-import com.gehj.general_core.ConfigKeys;
-import com.gehj.general_core.Latte;
+import com.gehj.general_core.app.ConfigKeys;
+import com.gehj.general_core.app.Latte;
 
 import java.util.ArrayList;
 import java.util.WeakHashMap;

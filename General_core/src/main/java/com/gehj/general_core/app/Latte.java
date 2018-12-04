@@ -1,7 +1,10 @@
-package com.gehj.general_core;
+package com.gehj.general_core.app;
 
 import android.content.Context;
 import android.os.Handler;
+
+import com.gehj.general_core.app.ConfigKeys;
+import com.gehj.general_core.app.Configurator;
 
 /**
  * Created by 傅令杰 on 2017/3/29

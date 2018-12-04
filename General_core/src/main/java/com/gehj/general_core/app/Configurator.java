@@ -1,4 +1,4 @@
-package com.gehj.general_core;
+package com.gehj.general_core.app;
 
 import android.app.Activity;
 import android.os.Handler;

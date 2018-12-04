@@ -3,7 +3,7 @@ package com.gehj.general_core.util.dimen;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
-import com.gehj.general_core.Latte;
+import com.gehj.general_core.app.Latte;
 
 /**
  * Created by 傅令杰 on 2017/4/2

@@ -3,8 +3,8 @@ package com.gehj.general_core.net.callback;
 import android.os.Handler;
 
 
-import com.gehj.general_core.ConfigKeys;
-import com.gehj.general_core.Latte;
+import com.gehj.general_core.app.ConfigKeys;
+import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.net.RestCreator;
 import com.gehj.general_core.ui.LatteLoader;
 import com.gehj.general_core.ui.LoaderStyle;

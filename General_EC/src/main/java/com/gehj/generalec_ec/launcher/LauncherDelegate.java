@@ -9,15 +9,22 @@ import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
 
+import com.gehj.general_core.app.AccountManager;
+import com.gehj.general_core.app.IUserChecker;
 import com.gehj.general_core.delegates.LatteDelegate;
+import com.gehj.general_core.util.storage.LattePreference;
 import com.gehj.general_core.util.timer.BaseTimerTask;
 import com.gehj.general_core.util.timer.ITimerListener;
 import com.gehj.generalec_ec.R;
 import com.gehj.generalec_ec.R2;
+import com.ygsj.general_ui.launcher.ILauncherListener;
+import com.ygsj.general_ui.launcher.OnLauncherFinishTag;
+import com.ygsj.general_ui.launcher.ScrollLauncherTag;
 
 import java.text.MessageFormat;
 import java.util.Timer;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 
@@ -28,19 +35,19 @@ import butterknife.OnClick;
 public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 
 
-    //**@BindView(R2.id.tv_launcher_timer) //绑定倒计时;
+    @BindView(R2.id.tv_launcher_timer) //绑定倒计时;
     AppCompatTextView mTvTimer = null;
 
     private Timer mTimer = null;
     private int mCount = 5;//倒计时从5秒开始;
-   // private ILauncherListener mILauncherListener = null;
+    private ILauncherListener mILauncherListener = null;
 
     @OnClick(R2.id.tv_launcher_timer)
     void onClickTimerView() {//提前结束倒计时
         if (mTimer != null) {
             mTimer.cancel();
             mTimer = null;
-            checkIsShowScroll();
+            checkIsShowScroll();//直接显示主页;
         }
     }
 
@@ -50,13 +57,13 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         mTimer.schedule(task, 0, 1000);
     }
 
-    /*@Override
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         if (activity instanceof ILauncherListener) {
             mILauncherListener = (ILauncherListener) activity;
         }
-    }*/
+    }
 
     @Override
     public Object setLayout() {//view
@@ -68,10 +75,10 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         initTimer();
     }
 
-    //判断是否显示滑动启动页
+    //根据是否是第一次登陆,判断是否显示滑动启动页
     private void checkIsShowScroll() {
-        /*if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
-            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
+        if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {//是否是第一次登陆
+            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);//不是第一次登陆显示轮播广告;
         } else {
             //检查用户是否登录了APP
             AccountManager.checkAccount(new IUserChecker() {
@@ -89,7 +96,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
                     }
                 }
             });
-        }*/
+        }
     }
 
     @Override
