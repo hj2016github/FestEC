@@ -20,11 +20,12 @@ import java.util.ArrayList;
 
 /**
  * Created by 傅令杰 on 2017/4/22
+ * 这个fragment完全是借用第三方写的,没有布局
  */
 
 public class LauncherScrollDelegate extends LatteDelegate  implements OnItemClickListener {
 
-    private ConvenientBanner<Integer> mConvenientBanner = null;//需要传递图片;
+    private ConvenientBanner<Integer> mConvenientBanner = null;//ConvenientBanner线性布局,需要传递图片;
     private static final ArrayList<Integer> INTEGERS = new ArrayList<>();//图片的list
    // private ILauncherListener mILauncherListener = null;
 
@@ -34,9 +35,9 @@ public class LauncherScrollDelegate extends LatteDelegate  implements OnItemClic
         INTEGERS.add(R.mipmap.launcher_03);
         INTEGERS.add(R.mipmap.launcher_04);
         INTEGERS.add(R.mipmap.launcher_05);
-        mConvenientBanner
-                .setPages(new LauncherHolderCreator(), INTEGERS)
-                .setPageIndicator(new int[]{R.drawable.dot_normal, R.drawable.dot_focus})//框架中代码代替图片
+        mConvenientBanner//线性布局
+                .setPages(new LauncherHolderCreator(), INTEGERS)//传入图片
+                .setPageIndicator(new int[]{R.drawable.dot_normal, R.drawable.dot_focus})//框架中代码代替图片,时指示的小圆点;
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)//水平居中
                 .setOnItemClickListener(this)
                 .setCanLoop(false);

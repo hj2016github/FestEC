@@ -34,11 +34,10 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
 
     private void initContainer(@Nullable Bundle savedInstanceState) {//写法类似于activity创建视图;
         @SuppressLint("RestrictedApi")
-        final ContentFrameLayout container = new ContentFrameLayout(this);//fragment的容器;
-        container.setId(R.id.delegate_container);//设置id;
-        setContentView(container);
-        /*以上三行设置了xml,定义了main_layout.xml的id*/
-        if (savedInstanceState == null) {//第一次加载;
+        final ContentFrameLayout container = new ContentFrameLayout(this);//fragment的容器=contentlayout
+        container.setId(R.id.delegate_container);//contentlayout设置id;
+        setContentView(container);//调用原始的setContentView();
+        if (savedInstanceState == null) {//第一次加载,fragment镶到activity上;
             DELEGATE.loadRootFragment(R.id.delegate_container, setRootDelegate());//fragmention的方法;
         }
     }

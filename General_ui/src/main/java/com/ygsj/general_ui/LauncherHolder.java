@@ -8,6 +8,7 @@ import com.bigkoo.convenientbanner.holder.Holder;
 
 /**
  * Created by 傅令杰 on 2017/4/22
+ * 导航页直接传入的是图片
  */
 
 public class LauncherHolder implements Holder<Integer> {//recycleview的holder
