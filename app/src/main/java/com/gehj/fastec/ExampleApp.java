@@ -4,21 +4,15 @@ import android.app.Application;
 
 import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.net.interceptors.DebugInterceptor;
-/*import android.support.multidex.MultiDexApplication;
+import com.gehj.generalec_ec.icon.FontEcModule;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
+import android.support.multidex.MultiDexApplication;
 
-import com.diabin.fastec.example.event.ShareEvent;
-import com.diabin.fastec.example.event.TestEvent;
-import com.flj.latte.app.Latte;
-import com.flj.latte.ec.database.DatabaseManager;
-import com.flj.latte.ec.icon.FontEcModule;
-import com.flj.latte.net.interceptors.DebugInterceptor;
-import com.flj.latte.util.callback.CallbackManager;
-import com.flj.latte.util.callback.CallbackType;
-import com.flj.latte.util.callback.IGlobalCallback;
+
 import com.gehj.general_core.app.Latte;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
-import cn.jpush.android.api.JPushInterface;*/
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * Created by 傅令杰 on 2017/3/29
@@ -29,11 +23,14 @@ public class ExampleApp extends Application {
         super.onCreate();
         //设置全局变量;
         Latte.init(this)
-               // .withIcon(new FontAwesomeModule())
-                //.withIcon(new FontEcModule())
+                /*https://fontawesome.com/?from=io*/
+                /*https://www.cnblogs.com/zyw-205520/p/7266225.html?utm_source=debugrun&utm_medium=referral*/
+                //TODO 可以用到大宁等项目中;
+                .withIcon(new FontAwesomeModule())
+                .withIcon(new FontEcModule())
                 .withLoaderDelayed(1000)
                 .withApiHost("http://127.0.0.1")
-                .withInterceptor(new DebugInterceptor("test", R.raw.test)) //delegate的地址合起来是http://127.0.0.1/test/
+                //.withInterceptor(new DebugInterceptor("test", R.raw.test)) //delegate的地址合起来是http://127.0.0.1/test/
                // .withWeChatAppId("你的微信AppKey")
                // .withWeChatAppSecret("你的微信AppSecret")
                // .withJavascriptInterface("latte")

@@ -12,6 +12,9 @@ import com.joanzapata.iconify.Iconify;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;*/
 
+import com.joanzapata.iconify.IconFontDescriptor;
+import com.joanzapata.iconify.Iconify;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -27,7 +30,7 @@ public final class Configurator {
 	//一开始使用的weakhashmap,需要看android的数据结构;	
     private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();//static final 代码名字大写;
     private static final Handler HANDLER = new Handler();
-    //private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+    private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 	
 	/*---------单例--------*/
@@ -53,7 +56,7 @@ public final class Configurator {
     
 
     public final void configure() {
-      //  initIcons();
+        initIcons();
       //  Logger.addLogAdapter(new AndroidLogAdapter());
         LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, true); //配置完成后置为true;
       //  Utils.init(Latte.getApplicationContext());
@@ -69,19 +72,19 @@ public final class Configurator {
         return this;
     }
 
-//    private void initIcons() {
-//        if (ICONS.size() > 0) {
-//            final Iconify.IconifyInitializer initializer = Iconify.with(ICONS.get(0));
-//            for (int i = 1; i < ICONS.size(); i++) {
-//                initializer.with(ICONS.get(i));
-//            }
-//        }
-//    }
+    private void initIcons() {
+        if (ICONS.size() > 0) {
+            final Iconify.IconifyInitializer initializer = Iconify.with(ICONS.get(0));
+            for (int i = 1; i < ICONS.size(); i++) {
+                initializer.with(ICONS.get(i));
+            }
+        }
+    }
 
-//    public final Configurator withIcon(IconFontDescriptor descriptor) {
-//        ICONS.add(descriptor);
-//        return this;
-//    }
+    public final Configurator withIcon(IconFontDescriptor descriptor) {
+        ICONS.add(descriptor);
+        return this;
+    }
 
     public final Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);

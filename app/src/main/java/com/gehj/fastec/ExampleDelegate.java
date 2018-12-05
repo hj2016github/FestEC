@@ -43,7 +43,7 @@ public class ExampleDelegate extends LatteDelegate {//使用的fragment;
     }
 
     private  void testRestClient(){
-        RestClient.builder().url("http://127.0.0.1/test")//test是Application中第一个参数,要进行拦截的地址;
+        RestClient.builder().url("http://mock.eolinker.com/Vw4Pz6ib2c6ac93793e296a2d8acbb4e6ed0b424abea5ae?uri=fec/singup2")//test是Application中第一个参数,要进行拦截的地址;
                 .loader(getContext())//走的是默认的加载圈,我的加载时通过visible与invisible视图进行控制,这里是灵活的弹出;
                 .params("","")
                 .success(new ISuccess() {//相当于handler在UI线程中的代码;
@@ -60,7 +60,8 @@ public class ExampleDelegate extends LatteDelegate {//使用的fragment;
                 })
                 .error(new IError() {
                     @Override
-                    public void onError(int code, String msg) {
+                    public void onError(final int code, final String msg) {
+                        Toast.makeText(_mActivity, code+msg, Toast.LENGTH_SHORT).show();
 
                     }
                 }).build().get();

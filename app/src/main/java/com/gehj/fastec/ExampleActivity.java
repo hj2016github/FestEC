@@ -9,6 +9,8 @@ import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.delegates.LatteDelegate;
 import com.gehj.generalec_ec.launcher.LauncherDelegate;
 import com.gehj.generalec_ec.launcher.LauncherScrollDelegate;
+import com.gehj.generalec_ec.sign.SignInDelegate;
+import com.gehj.generalec_ec.sign.SignUpDelegate;
 
 
 public class ExampleActivity extends ProxyActivity{
@@ -29,7 +31,7 @@ public class ExampleActivity extends ProxyActivity{
     }
     @Override
     public LatteDelegate setRootDelegate() {
-        return new LauncherDelegate();
+        return new SignUpDelegate();
     }
    /* @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
