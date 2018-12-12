@@ -3,19 +3,20 @@ package com.gehj.fastec;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.widget.Toast;
 
 import com.gehj.general_core.activities.ProxyActivity;
 import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.delegates.LatteDelegate;
 import com.gehj.generalec_ec.launcher.LauncherDelegate;
 import com.gehj.generalec_ec.launcher.LauncherScrollDelegate;
+import com.gehj.generalec_ec.sign.ISignListener;
 import com.gehj.generalec_ec.sign.SignInDelegate;
 import com.gehj.generalec_ec.sign.SignUpDelegate;
 
 
-public class ExampleActivity extends ProxyActivity{
-        //  implements ISignListener,
-        // ILauncherListener
+public class ExampleActivity extends ProxyActivity implements ISignListener{
+        // ,ILauncherListener
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +33,16 @@ public class ExampleActivity extends ProxyActivity{
     @Override
     public LatteDelegate setRootDelegate() {
         return new SignUpDelegate();
+    }
+
+    @Override
+    public void onSignInSuccess() {
+        Toast.makeText(this, "登录成功", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onSignUpSuccess() {
+        Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
     }
    /* @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

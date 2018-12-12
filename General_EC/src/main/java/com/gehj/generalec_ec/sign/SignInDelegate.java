@@ -37,7 +37,7 @@ public class SignInDelegate extends LatteDelegate {
     private ISignListener mISignListener = null;
 
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Activity activity) {//activity调用时候实现最终接口
         super.onAttach(activity);
         if (activity instanceof ISignListener) {
             mISignListener = (ISignListener) activity;
@@ -54,8 +54,9 @@ public class SignInDelegate extends LatteDelegate {
                     .success(new ISuccess() {
                         @Override
                         public void onSuccess(String response) {
-                            LatteLogger.json("USER_PROFILE", response);
-                            //SignHandler.onSignIn(response, mISignListener);
+                            Toast.makeText(_mActivity, response.toString(), Toast.LENGTH_SHORT).show();
+                            //LatteLogger.json("USER_PROFILE", response);
+                            //SignHandler.onSignIn(response, mISignListener);//把用户信息插入数据库
                         }
                     })
                     .build()

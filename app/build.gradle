@@ -45,4 +45,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     compile 'cn.jiguang.sdk:jpush:3.0.1'
     compile 'cn.jiguang.sdk:jcore:1.1.0'
+    // https://mvnrepository.com/artifact/com.facebook.stetho/stetho
+    compile group: 'com.facebook.stetho', name: 'stetho', version: '1.4.2'
 }

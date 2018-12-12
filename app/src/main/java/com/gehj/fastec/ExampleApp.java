@@ -2,8 +2,10 @@ package com.gehj.fastec;
 
 import android.app.Application;
 
+import com.facebook.stetho.Stetho;
 import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.net.interceptors.DebugInterceptor;
+import com.gehj.generalec_ec.database.DatabaseManager;
 import com.gehj.generalec_ec.icon.FontEcModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import android.support.multidex.MultiDexApplication;
@@ -37,10 +39,10 @@ public class ExampleApp extends Application {
                // .withWebEvent("test", new TestEvent())
               //  .withWebEvent("share", new ShareEvent())
                 .configure();
-//        initStetho();
-      /*  DatabaseManager.getInstance().init(this);
+        initStetho();
+        DatabaseManager.getInstance().init(this);//初始化greenDao;
 
-        //开启极光推送
+       /* //开启极光推送
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
 
@@ -65,11 +67,11 @@ public class ExampleApp extends Application {
                 });*/
     }
 
-//    private void initStetho() {
-//        Stetho.initialize(
-//                Stetho.newInitializerBuilder(this)
-//                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-//                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
-//                        .build());
-//    }
+    private void initStetho() {
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                        .build());
+    }
 }

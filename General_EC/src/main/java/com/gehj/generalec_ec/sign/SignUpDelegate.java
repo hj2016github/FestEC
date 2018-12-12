@@ -1,6 +1,7 @@
 package com.gehj.generalec_ec.sign;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import com.gehj.general_core.net.callback.ISuccess;
 import com.gehj.general_core.util.log.LatteLogger;
 import com.gehj.generalec_ec.R;
 import com.gehj.generalec_ec.R2;
+import com.gehj.generalec_ec.database.DatabaseManager;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -41,10 +43,10 @@ public class SignUpDelegate extends LatteDelegate {
     private ISignListener mISignListener = null;
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (activity instanceof ISignListener) {
-            mISignListener = (ISignListener) activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof ISignListener) {
+            mISignListener = (ISignListener) context;
         }
     }
 
@@ -61,7 +63,7 @@ public class SignUpDelegate extends LatteDelegate {
                         @Override
                         public void onSuccess(final String response) {
                             Toast.makeText(_mActivity, response.toString(), Toast.LENGTH_SHORT).show();
-                            LatteLogger.json("USER_PROFILE", response);
+                           // LatteLogger.json("USER_PROFILE", response);
                             //SignHandler.onSignUp(response, mISignListener);
                         }
                     })
