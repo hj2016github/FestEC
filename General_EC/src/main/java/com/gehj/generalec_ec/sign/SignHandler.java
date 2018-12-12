@@ -23,7 +23,7 @@ public class SignHandler {
         final String address = profileJson.getString("address");
 
         final UserProfile profile = new UserProfile(userId, name, avatar, gender, address);
-        DatabaseManager.getInstance().getDao().insert(profile);//插入数据库;
+        //DatabaseManager.getInstance().getDao().insert(profile);//插入数据库;
 
         //已经登录成功了
         AccountManager.setSignState(true);
@@ -39,8 +39,9 @@ public class SignHandler {
         final String gender = profileJson.getString("gender");
         final String address = profileJson.getString("address");
 
-        final UserProfile profile = new UserProfile(0, name, avatar, gender, address);
-        DatabaseManager.getInstance().getDao().insert(profile);
+        final UserProfile profile = new UserProfile(userId, name, avatar, gender, address);
+        //因为注册时候插入的id总是相同,主键重复,先注释掉;
+       // DatabaseManager.getInstance().getDao().insert(profile);
 
         //已经注册成功了
         AccountManager.setSignState(true);

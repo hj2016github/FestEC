@@ -14,6 +14,7 @@ import com.gehj.general_core.app.IUserChecker;
 import com.gehj.general_core.delegates.LatteDelegate;
 import com.gehj.general_core.util.storage.LattePreference;
 import com.gehj.generalec_ec.R;
+import com.gehj.generalec_ec.sign.SignInDelegate;
 import com.ygsj.general_ui.LauncherHolderCreator;
 import com.ygsj.general_ui.launcher.ILauncherListener;
 import com.ygsj.general_ui.launcher.OnLauncherFinishTag;
@@ -72,22 +73,8 @@ public class LauncherScrollDelegate extends LatteDelegate  implements OnItemClic
         //如果点击的是最后一个
         if (position == INTEGERS.size() - 1) {
             LattePreference.setAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name(), true);//说明是第一进入,以后不用进入;
-            //检查用户是否已经登录
-            AccountManager.checkAccount(new IUserChecker() {
-                @Override
-                public void onSignIn() {
-                    if (mILauncherListener != null) {
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
-                    }
-                }
-
-                @Override
-                public void onNotSignIn() {
-                    if (mILauncherListener != null) {
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
-                    }
-                }
-            });
+            getSupportDelegate().start(new SignInDelegate(), SINGLETASK);//强制进入登录界面;
+            //TODO 如果是展示类app,应该直接进入主界面,某些功能进行登录;如果是个人型app,强制跳转注册界面或者登录界面;
         }
     }
 

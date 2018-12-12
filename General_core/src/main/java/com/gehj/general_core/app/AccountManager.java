@@ -14,11 +14,11 @@ public class AccountManager {
     }
 
     //保存用户登录状态，登录后调用
-    public static void setSignState(boolean state) {
+    public static void setSignState(boolean state) {//登录成功后设置为true;
         LattePreference.setAppFlag(SignTag.SIGN_TAG.name(), state);
     }
 
-    private static boolean isSignIn() {
+    private static boolean isSignIn() {// 是否已经登录
         return LattePreference.getAppFlag(SignTag.SIGN_TAG.name());
     }
 

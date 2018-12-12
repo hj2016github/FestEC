@@ -1,6 +1,7 @@
 package com.gehj.generalec_ec.launcher;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
@@ -58,7 +59,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
     }
 
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context activity) {
         super.onAttach(activity);
         if (activity instanceof ILauncherListener) {
             mILauncherListener = (ILauncherListener) activity;
@@ -80,12 +81,12 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {//是否是第一次登陆
             getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);//不是第一次登陆显示轮播广告;
         } else {
-            //检查用户是否登录了APP
-            AccountManager.checkAccount(new IUserChecker() {
+            //不是第一次登录不显示轮播,并检查用户是否登录了APP
+            AccountManager.checkAccount(new IUserChecker() {// AccountManager.checkAccount检验用户是否登录过;
                 @Override
                 public void onSignIn() {
                     if (mILauncherListener != null) {
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);//SIGNED登录成功的状态
                     }
                 }
 

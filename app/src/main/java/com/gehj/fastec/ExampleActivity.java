@@ -13,10 +13,12 @@ import com.gehj.generalec_ec.launcher.LauncherScrollDelegate;
 import com.gehj.generalec_ec.sign.ISignListener;
 import com.gehj.generalec_ec.sign.SignInDelegate;
 import com.gehj.generalec_ec.sign.SignUpDelegate;
+import com.ygsj.general_ui.launcher.ILauncherListener;
+import com.ygsj.general_ui.launcher.OnLauncherFinishTag;
 
 
-public class ExampleActivity extends ProxyActivity implements ISignListener{
-        // ,ILauncherListener
+public class ExampleActivity extends ProxyActivity implements ISignListener
+         ,ILauncherListener{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener{
     }
     @Override
     public LatteDelegate setRootDelegate() {
-        return new SignUpDelegate();
+        return new LauncherDelegate();
     }
 
     @Override
@@ -44,6 +46,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener{
     public void onSignUpSuccess() {
         Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
     }
+
    /* @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,21 +84,22 @@ public class ExampleActivity extends ProxyActivity implements ISignListener{
     @Override
     public void onSignUpSuccess() {
         Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
-    }
+    }*/
 
     @Override
-    public void onLauncherFinish(OnLauncherFinishTag tag) {
+    public void onLauncherFinish(OnLauncherFinishTag tag) {//登录的回调;
         switch (tag) {
             case SIGNED:
-//                Toast.makeText(this, "启动结束，用户登录了", Toast.LENGTH_LONG).show();
-                getSupportDelegate().startWithPop(new EcBottomDelegate());
+               Toast.makeText(this, "启动结束，用户登录了", Toast.LENGTH_LONG).show();
+                //getSupportDelegate().startWithPop(new EcBottomDelegate());
+                getSupportDelegate().start(new ExampleDelegate());//进入主页
                 break;
             case NOT_SIGNED:
-//                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
-                getSupportDelegate().startWithPop(new SignInDelegate());
+               Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
+                getSupportDelegate().start(new SignInDelegate());//重新登录
                 break;
             default:
                 break;
         }
-    }*/
+    }
 }
