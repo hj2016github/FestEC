@@ -14,7 +14,7 @@ public class AccountManager {
     }
 
     //保存用户登录状态，登录后调用
-    public static void setSignState(boolean state) {//登录成功后设置为true;
+    public static void setSignState(boolean state) {//登录注册成功后要调用一次并设置为true;
         LattePreference.setAppFlag(SignTag.SIGN_TAG.name(), state);
     }
 
