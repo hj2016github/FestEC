@@ -59,7 +59,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
     }
 
     @Override
-    public void onAttach(Context activity) {
+    public void onAttach(Context activity) {//相当于set(接口)或者listener(接口)方法,接口回调必用方法,framgment给activity传值也是用类似方法;
         super.onAttach(activity);
         if (activity instanceof ILauncherListener) {
             mILauncherListener = (ILauncherListener) activity;
@@ -93,7 +93,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
                 @Override
                 public void onNotSignIn() {
                     if (mILauncherListener != null) {
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);//接口调用传值;
                     }
                 }
             });
