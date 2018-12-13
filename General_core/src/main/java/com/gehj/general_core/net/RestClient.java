@@ -66,11 +66,11 @@ public class RestClient {
         final RestService service = RestCreator.getRestService();//1,静态内部内创建 2,Retrofit进行对接口代理;
         Call<String> call = null;
 
-        if (REQUEST != null) {//调用buidler实现接口;
-            REQUEST.onRequestStart();//加载圈;
+        if (REQUEST != null) {//这个方法没有调用,可以在前台activity中进行调用;
+            REQUEST.onRequestStart();
         }
 
-        if (LOADER_STYLE != null) {//请求之前进行加载;
+        if (LOADER_STYLE != null) {//加载圈;
             LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
         }
 

@@ -12,6 +12,7 @@ import com.gehj.general_core.delegates.LatteDelegate;
 import com.gehj.general_core.net.RestClient;
 import com.gehj.general_core.net.callback.IError;
 import com.gehj.general_core.net.callback.IFailure;
+import com.gehj.general_core.net.callback.IRequest;
 import com.gehj.general_core.net.callback.ISuccess;
 
 import static android.content.ContentValues.TAG;
