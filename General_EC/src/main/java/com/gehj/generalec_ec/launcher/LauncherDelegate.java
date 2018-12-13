@@ -82,13 +82,13 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
             getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);//不是第一次登陆显示轮播广告;
         } else {
             //第一次以后登录不显示轮播,并检查用户是否登录了APP
-            //下面直接使用接口;
+            //new IUserChecker这种方式相当于set(接口),listener(接口)的形式
             AccountManager.checkAccount(new IUserChecker() {// AccountManager.checkAccount检验用户是否登录过;
-               //下面使用接口回调
+
                 @Override
                 public void onSignIn() {
                     if (mILauncherListener != null) {
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);//SIGNED登录成功的状态
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);////下面使用接口回调,SIGNED登录成功的状态
                     }
                 }
 
