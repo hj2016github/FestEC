@@ -15,6 +15,7 @@ import retrofit2.Response;
 
 /**
  * Created by 傅令杰 on 2017/4/2
+ * 重写了callback,其实直接调用的就是callback的response,只不过多加了一层;
  */
 
 public final class RequestCallbacks implements Callback<String> {
