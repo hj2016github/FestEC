@@ -13,7 +13,7 @@ public enum ConfigKeys {//ConfigType 枚举类;
     INTERCEPTOR,
     WE_CHAT_APP_ID,
     WE_CHAT_APP_SECRET,
-    ACTIVITY,
+    ACTIVITY,//為微信準備的
     HANDLER,
     JAVASCRIPT_INTERFACE
 }

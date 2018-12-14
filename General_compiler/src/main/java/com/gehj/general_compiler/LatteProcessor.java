@@ -70,10 +70,7 @@ public final class LatteProcessor extends AbstractProcessor {
     VariableElement         --->    成员变量、enum常量、方法或构造方法参数、局部变量或异常参数。
     TypeElement             --->    类、接口
     TypeParameterElement    --->    在方法或构造方法、类、接口处定义的泛型参数。
-    作者：__Tiny__
-    链接：https://www.jianshu.com/p/8dc7a49d86be
-    來源：简书
-    简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。*/
+    */
     //扫描每个类,
     private void scan(RoundEnvironment env, Class<? extends Annotation> annotation,
                       AnnotationValueVisitor visitor) { //env上下文环境;
