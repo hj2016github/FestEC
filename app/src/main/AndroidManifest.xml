@@ -27,6 +27,20 @@
             </intent-filter>
 
         </activity>
+        <!--以下微信迴調的界面,1,是個入口所以需要intent-filter,設置成透明的,exported="true"
+        可以吊起-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="微信回调"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

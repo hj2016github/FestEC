@@ -7,6 +7,7 @@ import com.tencent.mm.opensdk.modelbase.BaseReq;
 
 /**
  * Created by 傅令杰 on 2017/1/2
+ * 微信支付後迴調頁面;
  */
 
 public class WXPayEntryTemplate extends BaseWXPayEntryActivity {
@@ -15,7 +16,7 @@ public class WXPayEntryTemplate extends BaseWXPayEntryActivity {
     protected void onPaySuccess() {
         Toast.makeText(this, "支付成功", Toast.LENGTH_SHORT).show();
         finish();
-        overridePendingTransition(0, 0);
+        overridePendingTransition(0, 0);//沒有動畫
     }
 
     @Override

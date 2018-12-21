@@ -108,7 +108,7 @@ public final class Configurator {
         return this;
     }
 
-    public final Configurator withActivity(Activity activity) {
+    public final Configurator withActivity(Activity activity) {//微信的activity
         LATTE_CONFIGS.put(ConfigKeys.ACTIVITY, activity);
         return this;
     }

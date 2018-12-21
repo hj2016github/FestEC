@@ -28,7 +28,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener
         if (actionBar != null) {
             actionBar.hide();
         }
-        Latte.getConfigurator().withActivity(this);
+        Latte.getConfigurator().withActivity(this);//給微信準備全局的activity;
         //StatusBarCompat.translucentStatusBar(this, true);
 
     }

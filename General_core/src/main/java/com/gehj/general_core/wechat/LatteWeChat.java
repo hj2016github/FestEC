@@ -11,7 +11,8 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 /**
- * Created by 傅令杰 on 2017/4/25
+ * Created by 傅令杰 on 2017/4/25  单例模式;
+ * 微信的初始化操作:APP_ID,APP_SECRET的设置
  */
 
 public class LatteWeChat {
@@ -28,7 +29,7 @@ public class LatteWeChat {
         return Holder.INSTANCE;
     }
 
-    private LatteWeChat() {
+    private LatteWeChat() {//構造中初始化wxAPI;
         final Activity activity = Latte.getConfiguration(ConfigKeys.ACTIVITY);
         WXAPI = WXAPIFactory.createWXAPI(activity, APP_ID, true);
         WXAPI.registerApp(APP_ID);
@@ -38,7 +39,7 @@ public class LatteWeChat {
         return WXAPI;
     }
 
-    public LatteWeChat onSignSuccess(IWeChatSignInCallback callback) {
+    public LatteWeChat onSignSuccess(IWeChatSignInCallback callback) {//builder模式
         this.mSignInCallback = callback;
         return this;
     }
@@ -47,7 +48,7 @@ public class LatteWeChat {
         return mSignInCallback;
     }
 
-    public final void signIn() {
+    public final void signIn() {//微信註冊固定寫法;
         final SendAuth.Req req = new SendAuth.Req();
         req.scope = "snsapi_userinfo";
         req.state = "random_state";

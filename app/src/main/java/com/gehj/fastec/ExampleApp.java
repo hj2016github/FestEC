@@ -33,8 +33,8 @@ public class ExampleApp extends Application {
                 .withLoaderDelayed(1000)
                 .withApiHost("http://127.0.0.1")
                 //.withInterceptor(new DebugInterceptor("test", R.raw.test)) //delegate的地址合起来是http://127.0.0.1/test/
-               // .withWeChatAppId("你的微信AppKey")
-               // .withWeChatAppSecret("你的微信AppSecret")
+                .withWeChatAppId("你的微信AppKey")//本项目在微信登录无法回调;
+                .withWeChatAppSecret("你的微信AppSecret")//本项目在微信登录无法回调;
                // .withJavascriptInterface("latte")
                // .withWebEvent("test", new TestEvent())
               //  .withWebEvent("share", new ShareEvent())

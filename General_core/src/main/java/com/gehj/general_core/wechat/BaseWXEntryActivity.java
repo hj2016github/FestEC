@@ -13,6 +13,7 @@ import com.tencent.mm.opensdk.modelmsg.SendAuth;
 
 /**
  * Created by 傅令杰 on 2017/4/25
+ * 微信登錄回调頁面;
  */
 
 public abstract class BaseWXEntryActivity extends BaseWXActivity {
@@ -28,10 +29,9 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
     //第三方应用发送请求到微信后的回调
     @Override
     public void onResp(BaseResp baseResp) {
-
         final String code = ((SendAuth.Resp) baseResp).code;
         final StringBuilder authUrl = new StringBuilder();
-        authUrl
+        authUrl //請求Accesstoken與openID的地址
                 .append("https://api.weixin.qq.com/sns/oauth2/access_token?appid=")
                 .append(LatteWeChat.APP_ID)
                 .append("&secret=")
@@ -41,10 +41,10 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
                 .append("&grant_type=authorization_code");
 
         LatteLogger.d("authUrl", authUrl.toString());
-        getAuth(authUrl.toString());
+        getAuth(authUrl.toString());//發送請求Accesstoken與openID
     }
 
-    private void getAuth(String authUrl) {
+    private void getAuth(String authUrl) {//第二次請求;
         RestClient
                 .builder()
                 .url(authUrl)
@@ -66,7 +66,7 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
                                 .append("zh_CN");
 
                         LatteLogger.d("userInfoUrl", userInfoUrl.toString());
-                        getUserInfo(userInfoUrl.toString());
+                        getUserInfo(userInfoUrl.toString());//請求user的信息名字/頭像等;
 
                     }
                 })
@@ -81,7 +81,7 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-                        onSignInSuccess(response);
+                        onSignInSuccess(response);//接口迴調:迴調抽象方法;
                     }
                 })
                 .failure(new IFailure() {

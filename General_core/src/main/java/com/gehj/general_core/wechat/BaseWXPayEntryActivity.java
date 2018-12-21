@@ -5,6 +5,7 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 /**
  * Created by 傅令杰
+ * 微信支付請求頁面
  */
 
 public abstract class BaseWXPayEntryActivity extends BaseWXActivity {

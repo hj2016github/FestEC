@@ -16,6 +16,8 @@ import com.gehj.general_core.delegates.LatteDelegate;
 import com.gehj.general_core.net.RestClient;
 import com.gehj.general_core.net.callback.ISuccess;
 import com.gehj.general_core.util.log.LatteLogger;
+import com.gehj.general_core.wechat.LatteWeChat;
+import com.gehj.general_core.wechat.callbacks.IWeChatSignInCallback;
 import com.gehj.generalec_ec.R;
 import com.gehj.generalec_ec.R2;
 
@@ -60,13 +62,14 @@ public class SignInDelegate extends LatteDelegate {
                         }
                     })
                     .build()
-                    .post();
+                    //.post();
+                     .get();
         }
     }
 
     @OnClick(R2.id.icon_sign_in_wechat)
     void onClickWeChat() {
-        /*LatteWeChat
+        LatteWeChat
                 .getInstance()
                 .onSignSuccess(new IWeChatSignInCallback() {
                     @Override
@@ -74,7 +77,7 @@ public class SignInDelegate extends LatteDelegate {
                         Toast.makeText(getContext(), userInfo, Toast.LENGTH_LONG).show();
                     }
                 })
-                .signIn();*/
+                .signIn();
     }
 
     @OnClick(R2.id.tv_link_sign_up)
