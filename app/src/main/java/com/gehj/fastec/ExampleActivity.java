@@ -10,11 +10,15 @@ import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.delegates.LatteDelegate;
 import com.gehj.generalec_ec.launcher.LauncherDelegate;
 import com.gehj.generalec_ec.launcher.LauncherScrollDelegate;
+import com.gehj.generalec_ec.main.EcBottomDelegate;
 import com.gehj.generalec_ec.sign.ISignListener;
 import com.gehj.generalec_ec.sign.SignInDelegate;
 import com.gehj.generalec_ec.sign.SignUpDelegate;
 import com.ygsj.general_ui.launcher.ILauncherListener;
 import com.ygsj.general_ui.launcher.OnLauncherFinishTag;
+
+import cn.jpush.android.api.JPushInterface;
+import qiu.niorgai.StatusBarCompat;
 
 
 public class ExampleActivity extends ProxyActivity implements ISignListener
@@ -29,7 +33,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener
             actionBar.hide();
         }
         Latte.getConfigurator().withActivity(this);//給微信準備全局的activity;
-        //StatusBarCompat.translucentStatusBar(this, true);
+        StatusBarCompat.translucentStatusBar(this, true);
 
     }
     @Override
@@ -47,19 +51,8 @@ public class ExampleActivity extends ProxyActivity implements ISignListener
         Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
     }
 
-   /* @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        final ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
-        Latte.getConfigurator().withActivity(this);
-     //   StatusBarCompat.translucentStatusBar(this, true);
 
-    }*/
-
-    /*@Override
+    @Override
     protected void onPause() {
         super.onPause();
         JPushInterface.onPause(this);
@@ -71,20 +64,6 @@ public class ExampleActivity extends ProxyActivity implements ISignListener
         JPushInterface.onResume(this);
     }
 
-    @Override
-    public LatteDelegate setRootDelegate() {
-        return new EcBottomDelegate();
-    }
-
-    @Override
-    public void onSignInSuccess() {
-        Toast.makeText(this, "登录成功", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onSignUpSuccess() {
-        Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
-    }*/
 
     @Override
     public void onLauncherFinish(OnLauncherFinishTag tag) {//登录的回调;
@@ -92,11 +71,14 @@ public class ExampleActivity extends ProxyActivity implements ISignListener
             case SIGNED:
                Toast.makeText(this, "启动结束，用户登录了", Toast.LENGTH_LONG).show();
                 //getSupportDelegate().startWithPop(new EcBottomDelegate());
-                getSupportDelegate().start(new ExampleDelegate());//进入主页
+                //getSupportDelegate().start(new EcBottomDelegate());//进入主页
                 break;
             case NOT_SIGNED:
-               Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
-                getSupportDelegate().start(new SignInDelegate());//重新登录
+                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
+                getSupportDelegate().startWithPop(new EcBottomDelegate());//进入主页
+
+                //getSupportDelegate().start(new SignInDelegate());//重新登录
+               // getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             default:
                 break;

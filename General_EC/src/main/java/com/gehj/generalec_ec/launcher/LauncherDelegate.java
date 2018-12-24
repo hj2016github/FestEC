@@ -88,7 +88,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
                 @Override
                 public void onSignIn() {
                     if (mILauncherListener != null) {
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);////下面使用接口回调,SIGNED登录成功的状态
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);//下面使用接口回调,SIGNED登录成功的状态
                     }
                 }
 
