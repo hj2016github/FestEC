@@ -30,6 +30,7 @@ public abstract class BottomItemDelegate extends LatteDelegate implements View.O
     }
 
     /*focus重新request*/
+    //TODO fragment的onResume
     @Override
     public void onResume() {
         super.onResume();

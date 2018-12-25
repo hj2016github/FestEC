@@ -3,6 +3,7 @@ package com.gehj.generalec_ec.main.index;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.solver.ArrayLinkedVariables;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
@@ -15,10 +16,16 @@ import android.widget.Toast;
 
 
 import com.gehj.general_core.delegates.bottom.BottomItemDelegate;
+import com.gehj.general_core.net.RestClient;
+import com.gehj.general_core.net.callback.ISuccess;
+import com.gehj.general_core.recycler.MultipleFields;
+import com.gehj.general_core.recycler.MultipleItemEntity;
 import com.gehj.generalec_ec.R;
 import com.gehj.generalec_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.ygsj.general_ui.refresh.RefreshHandler;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -53,6 +60,18 @@ public class IndexDelegate extends BottomItemDelegate {
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
        // mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
         mRefreshHandler = new RefreshHandler(mRefreshLayout,null);
+
+        //测试:
+    /*    RestClient.builder().url("index.php").success(new ISuccess() {
+            @Override
+            public void onSuccess(String response) {
+                    final IndexDataConverter converter = new IndexDataConverter();
+                    converter.setJsonData(response);
+                    final ArrayList<MultipleItemEntity> list = converter.convert();
+                    final String image = list.get(1).getField(MultipleFields.IMAGE_URL);
+                Toast.makeText(_mActivity, image, Toast.LENGTH_SHORT).show();
+            }
+        }).build().get();*/
        /* CallbackManager.getInstance()
                 .addCallback(CallbackType.ON_SCAN, new IGlobalCallback<String>() {
                     @Override
