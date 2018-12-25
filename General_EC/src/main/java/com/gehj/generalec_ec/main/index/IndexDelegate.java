@@ -18,6 +18,7 @@ import com.gehj.general_core.delegates.bottom.BottomItemDelegate;
 import com.gehj.generalec_ec.R;
 import com.gehj.generalec_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
+import com.ygsj.general_ui.refresh.RefreshHandler;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,18 +41,19 @@ public class IndexDelegate extends BottomItemDelegate {
     @BindView(R2.id.et_search_view)
     AppCompatEditText mSearchView = null;
 
-    //private RefreshHandler mRefreshHandler = null;
+    private RefreshHandler mRefreshHandler = null;
 
    // @OnClick(R2.id.icon_index_scan)
    // void onClickScanQrCode() {
     //    startScanWithCheck(this.getParentDelegate());
    // }
 
-
+//TODO 使用handler的思想
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-       /* mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
-        CallbackManager.getInstance()
+       // mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
+        mRefreshHandler = new RefreshHandler(mRefreshLayout,null);
+       /* CallbackManager.getInstance()
                 .addCallback(CallbackType.ON_SCAN, new IGlobalCallback<String>() {
                     @Override
                     public void executeCallback(@Nullable String args) {
@@ -60,14 +62,14 @@ public class IndexDelegate extends BottomItemDelegate {
                 });
         mSearchView.setOnFocusChangeListener(this);*/
     }
-
+    /*下拉刷新,在懒加载中进行调用*/
     private void initRefreshLayout() {
-        mRefreshLayout.setColorSchemeResources(
+        mRefreshLayout.setColorSchemeResources(//三个圈的变化;
                 android.R.color.holo_blue_bright,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light
         );
-        mRefreshLayout.setProgressViewOffset(true, 120, 300);
+        mRefreshLayout.setProgressViewOffset(true, 120, 300);//参数:球是否由小变大,起始高度,终止高度;
     }
 
     /*private void initRecyclerView() {
@@ -79,13 +81,16 @@ public class IndexDelegate extends BottomItemDelegate {
         mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
     }*/
 
-    /*@Override
+
+    //TODO 安卓中的懒加载;
+    /*fragmention的懒加载*/
+    @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
-        initRecyclerView();
-        mRefreshHandler.firstPage("index.php");
-    }*/
+        //initRecyclerView();
+        mRefreshHandler.firstPage("index.php");//首页数据的请求,作者本地架起来php服务器;
+    }
 
     @Override
     public Object setLayout() {
