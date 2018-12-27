@@ -22,6 +22,7 @@ import com.gehj.generalec_ec.R;
 import com.gehj.generalec_ec.R2;
 import com.gehj.generalec_ec.main.EcBottomDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
+import com.ygsj.general_ui.recycler.BaseDecoration;
 import com.ygsj.general_ui.refresh.RefreshHandler;
 
 import java.util.ArrayList;
@@ -92,11 +93,11 @@ public class IndexDelegate extends BottomItemDelegate {
     private void initRecyclerView() {
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
-       /* mRecyclerView.addItemDecoration
+        mRecyclerView.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
-        mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
-    */}
+       // mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
+    }
 
 
     //TODO 安卓中的懒加载;
