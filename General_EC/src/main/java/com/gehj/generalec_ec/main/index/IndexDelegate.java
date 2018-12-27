@@ -18,8 +18,6 @@ import android.widget.Toast;
 import com.gehj.general_core.delegates.bottom.BottomItemDelegate;
 import com.gehj.general_core.net.RestClient;
 import com.gehj.general_core.net.callback.ISuccess;
-import com.gehj.general_core.recycler.MultipleFields;
-import com.gehj.general_core.recycler.MultipleItemEntity;
 import com.gehj.generalec_ec.R;
 import com.gehj.generalec_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;

@@ -1,4 +1,4 @@
-package com.gehj.general_core.recycler;
+package com.ygsj.general_ui.recycler;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
@@ -41,7 +41,7 @@ public class MultipleItemEntity implements MultiItemEntity {
         return FIELDS_REFERENCE.get();
     }
 
-    public final MultipleItemEntity setField(Object key,Object value){
+    public final MultipleItemEntity setField(Object key, Object value){
         FIELDS_REFERENCE.get().put(key,value);
         return this;//链式调用使用builder;
     }

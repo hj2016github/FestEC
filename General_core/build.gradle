@@ -77,4 +77,5 @@ dependencies {
 //recyclerview
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:+'
 
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
 }

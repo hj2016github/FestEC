@@ -3,10 +3,11 @@ package com.gehj.generalec_ec.main.index;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.gehj.general_core.recycler.DataConverter;
-import com.gehj.general_core.recycler.ItemType;
-import com.gehj.general_core.recycler.MultipleFields;
-import com.gehj.general_core.recycler.MultipleItemEntity;
+import com.ygsj.general_ui.recycler.DataConverter;
+import com.ygsj.general_ui.recycler.ItemType;
+import com.ygsj.general_ui.recycler.MultipleFields;
+import com.ygsj.general_ui.recycler.MultipleItemEntity;
+
 
 import java.util.ArrayList;
 

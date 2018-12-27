@@ -1,4 +1,4 @@
-package com.gehj.general_core.recycler;
+package com.ygsj.general_ui.recycler;
 
 import java.util.ArrayList;
 
