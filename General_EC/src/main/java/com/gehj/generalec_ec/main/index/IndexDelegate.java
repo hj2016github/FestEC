@@ -20,6 +20,7 @@ import com.gehj.general_core.net.RestClient;
 import com.gehj.general_core.net.callback.ISuccess;
 import com.gehj.generalec_ec.R;
 import com.gehj.generalec_ec.R2;
+import com.gehj.generalec_ec.main.EcBottomDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.ygsj.general_ui.refresh.RefreshHandler;
 
@@ -56,8 +57,7 @@ public class IndexDelegate extends BottomItemDelegate {
 //TODO 使用handler的思想
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-       // mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
-        mRefreshHandler = new RefreshHandler(mRefreshLayout,null);
+        mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
 
         //测试:
     /*    RestClient.builder().url("index.php").success(new ISuccess() {
@@ -88,15 +88,15 @@ public class IndexDelegate extends BottomItemDelegate {
         );
         mRefreshLayout.setProgressViewOffset(true, 120, 300);//参数:球是否由小变大,起始高度,终止高度;
     }
-
-    /*private void initRecyclerView() {
+    /*recycleview始化布局*/
+    private void initRecyclerView() {
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.addItemDecoration
+       /* mRecyclerView.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
         mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
-    }*/
+    */}
 
 
     //TODO 安卓中的懒加载;
@@ -105,7 +105,7 @@ public class IndexDelegate extends BottomItemDelegate {
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
-        //initRecyclerView();
+        initRecyclerView();
         mRefreshHandler.firstPage("index.php");//首页数据的请求,作者本地架起来php服务器;
     }
 

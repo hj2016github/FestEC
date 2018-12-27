@@ -9,6 +9,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.net.RestClient;
 import com.gehj.general_core.net.callback.ISuccess;
+import com.gehj.general_core.util.log.LatteLogger;
+import com.ygsj.general_ui.recycler.DataConverter;
+import com.ygsj.general_ui.recycler.MultipleRecyclerAdapter;
 
 
 /**
@@ -18,29 +21,29 @@ import com.gehj.general_core.net.callback.ISuccess;
 
 public class RefreshHandler
         implements
-        SwipeRefreshLayout.OnRefreshListener{
-       // , BaseQuickAdapter.RequestLoadMoreListener {
-
+        SwipeRefreshLayout.OnRefreshListener
+       , BaseQuickAdapter.RequestLoadMoreListener {
+    /*作者的代码风格:在构造中对变量初始化,对多线程编程有好处*/
     private final SwipeRefreshLayout REFRESH_LAYOUT;
-    //private final PagingBean BEAN;
+    private final PagingBean BEAN;
     private final RecyclerView RECYCLERVIEW;
-    //private MultipleRecyclerAdapter mAdapter = null;
-   // private final DataConverter CONVERTER;
+    private MultipleRecyclerAdapter mAdapter = null;
+    private final DataConverter CONVERTER;
 
     public RefreshHandler(SwipeRefreshLayout swipeRefreshLayout,
-                           RecyclerView recyclerView){
-                          // DataConverter converter, PagingBean bean) {
+                           RecyclerView recyclerView,
+                           DataConverter converter, PagingBean bean) {
         this.REFRESH_LAYOUT = swipeRefreshLayout;//外界传入刷新布局;
         this.RECYCLERVIEW = recyclerView;
-        //this.CONVERTER = converter;
-        //this.BEAN = bean;
+        this.CONVERTER = converter;
+        this.BEAN = bean;
         REFRESH_LAYOUT.setOnRefreshListener(this);//设置监听;
     }
 
-   /* public static RefreshHandler create(SwipeRefreshLayout swipeRefreshLayout){
-                                       // RecyclerView recyclerView, DataConverter converter) {
+    public static RefreshHandler create(SwipeRefreshLayout swipeRefreshLayout,
+                                        RecyclerView recyclerView, DataConverter converter) {
         return new RefreshHandler(swipeRefreshLayout, recyclerView, converter, new PagingBean());
-    }*/
+    }
 
     private void refresh() {
         /*准备开始加载*/
@@ -55,27 +58,27 @@ public class RefreshHandler
     }
 
     public void firstPage(String url) {//首页数据请求;
-        //BEAN.setDelayed(1000);
+        BEAN.setDelayed(1000);
         RestClient.builder()
                 .url(url)
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
                         final JSONObject object = JSON.parseObject(response);
-                       // BEAN.setTotal(object.getInteger("total"))
-                       //         .setPageSize(object.getInteger("page_size"));
+                        BEAN.setTotal(object.getInteger("total"))
+                                .setPageSize(object.getInteger("page_size"));
                         //设置Adapter
-                       // mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response));
-                      //  mAdapter.setOnLoadMoreListener(RefreshHandler.this, RECYCLERVIEW);
-                       // RECYCLERVIEW.setAdapter(mAdapter);
-                       // BEAN.addIndex();
+                        mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response));
+                        mAdapter.setOnLoadMoreListener(RefreshHandler.this, RECYCLERVIEW);
+                        RECYCLERVIEW.setAdapter(mAdapter);
+                        BEAN.addIndex();
                     }
                 })
                 .build()
                 .get();
     }
 
-   /* private void paging(final String url) {
+    private void paging(final String url) {
         final int pageSize = BEAN.getPageSize();
         final int currentCount = BEAN.getCurrentCount();
         final int total = BEAN.getTotal();
@@ -106,7 +109,7 @@ public class RefreshHandler
                 }
             }, 1000);
         }
-    }*/
+    }
 
     @Override
     public void onRefresh() {// SwipeRefreshLayout回调方法;
@@ -114,8 +117,8 @@ public class RefreshHandler
     }
 
 
-   /* @Override
+    @Override
     public void onLoadMoreRequested() {
         paging("refresh.php?index=");
     }
-*/}
+}
