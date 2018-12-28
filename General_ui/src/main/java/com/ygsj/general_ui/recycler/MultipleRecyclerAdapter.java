@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Created by 傅令杰
  */
-
+//TODO 熟悉recyeleview 以及 熟悉第三方框架
 public class MultipleRecyclerAdapter extends
         BaseMultiItemQuickAdapter<MultipleItemEntity, MultipleViewHolder>
         implements

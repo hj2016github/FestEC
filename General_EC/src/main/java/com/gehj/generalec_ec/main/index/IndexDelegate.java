@@ -107,7 +107,8 @@ public class IndexDelegate extends BottomItemDelegate {
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
         initRecyclerView();
-        mRefreshHandler.firstPage("index.php");//首页数据的请求,作者本地架起来php服务器;
+        //http://mock.eolinker.com/Vw4Pz6ib2c6ac93793e296a2d8acbb4e6ed0b424abea5ae?uri=fec/index
+        mRefreshHandler.firstPage("http://mock.eolinker.com/Vw4Pz6ib2c6ac93793e296a2d8acbb4e6ed0b424abea5ae?uri=fec/index");//首页数据的请求,作者本地架起来php服务器;
     }
 
     @Override

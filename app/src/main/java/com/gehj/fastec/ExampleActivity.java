@@ -33,7 +33,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener
             actionBar.hide();
         }
         Latte.getConfigurator().withActivity(this);//給微信準備全局的activity;
-        StatusBarCompat.translucentStatusBar(this, true);
+        StatusBarCompat.translucentStatusBar(this, true);//沉浸式状态栏
 
     }
     @Override
@@ -75,7 +75,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener
                 break;
             case NOT_SIGNED:
                 Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
-                getSupportDelegate().startWithPop(new EcBottomDelegate());//进入主页
+                getSupportDelegate().start(new EcBottomDelegate());//进入主页
 
                 //getSupportDelegate().start(new SignInDelegate());//重新登录
                // getSupportDelegate().startWithPop(new EcBottomDelegate());

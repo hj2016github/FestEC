@@ -8,11 +8,12 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.gehj.generalec_ec.R;
-import com.ygsj.general_ui.RgbValue;
+import com.ygsj.general_ui.recycler.RgbValue;
 
 
 /**
  * Created by 傅令杰
+ * 沉浸式状态栏的变化,直接在xml的behavior中使用
  */
 
 @SuppressWarnings("unused")
@@ -24,35 +25,35 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
     private static final int SHOW_SPEED = 3;
     //定义变化的颜色
     private final RgbValue RGB_VALUE = RgbValue.create(255, 124, 2);
-
+    /*必须有两个参数的构造,否则会报错*/
     public TranslucentBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     public boolean layoutDependsOn(CoordinatorLayout parent, Toolbar child, View dependency) {
-        return dependency.getId() == R.id.rv_index;
+        return dependency.getId() == R.id.rv_index;//根据recycleview的变化而变化
     }
 
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, Toolbar child, View directTargetChild, View target, int nestedScrollAxes) {
         return true;
     }
-
+    /*处理具体逻辑*/
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, Toolbar child, View target, int dx, int dy, int[] consumed) {
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
         //增加滑动距离
-        mDistanceY += dy;
+        mDistanceY += dy;//每次滑动值会变大
         //toolbar的高度
-        final int targetHeight = child.getBottom();
+        final int targetHeight = child.getBottom();//child为依赖的对象;
 
         //当滑动时，并且距离小于 toolbar 高度的时候，调整渐变色
         if (mDistanceY > 0 && mDistanceY <= targetHeight) {
             final float scale = (float) mDistanceY / targetHeight;
             final float alpha = scale * 255;
             child.setBackgroundColor(Color.argb((int) alpha, RGB_VALUE.red(), RGB_VALUE.green(), RGB_VALUE.blue()));
-        } else if (mDistanceY > targetHeight) {
+        } else if (mDistanceY > targetHeight) {//滑动过快则直接变化
             child.setBackgroundColor(Color.rgb(RGB_VALUE.red(), RGB_VALUE.green(), RGB_VALUE.blue()));
         }
     }
