@@ -20,7 +20,7 @@
             android:textSize="20sp" />
 
     </android.support.v7.widget.Toolbar>
-
+    <!--设置成浅灰色背景则可以显示出分隔线-->
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
-
+        <!--layout_marginLeft就是分隔线-->
         <android.support.v7.widget.ContentFrameLayout
             android:id="@+id/sort_content_container"
             android:layout_width="0dp"

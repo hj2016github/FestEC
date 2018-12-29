@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 
 /**
  * Created by 傅令杰
+ * 这个实体类是统一的全部走的是键值对;
  */
 
 public class MultipleItemEntity implements MultiItemEntity {
