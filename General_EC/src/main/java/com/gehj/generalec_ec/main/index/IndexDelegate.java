@@ -122,7 +122,7 @@ public class IndexDelegate extends BottomItemDelegate {
         return false;
     }
 
-    /*@Override
+   /* @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) {
             getParentDelegate().getSupportDelegate().start(new SearchDelegate());
