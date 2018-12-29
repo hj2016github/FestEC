@@ -5,12 +5,13 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.gehj.general_core.delegates.LatteDelegate;
+import com.gehj.generalec_ec.detail.GoodsDetailDelegate;
 import com.ygsj.general_ui.recycler.MultipleFields;
 import com.ygsj.general_ui.recycler.MultipleItemEntity;
 
-
 /**
  * Created by 傅令杰
+ * 单击商品后出现的详情页
  */
 
 public class IndexItemClickListener extends SimpleClickListener {
@@ -29,8 +30,8 @@ public class IndexItemClickListener extends SimpleClickListener {
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         final MultipleItemEntity entity = (MultipleItemEntity) baseQuickAdapter.getData().get(position);
         final int goodsId = entity.getField(MultipleFields.ID);
-        //final GoodsDetailDelegate delegate = GoodsDetailDelegate.create(goodsId);
-       // DELEGATE.getSupportDelegate().start(delegate);
+        final GoodsDetailDelegate delegate = GoodsDetailDelegate.create(goodsId);
+        DELEGATE.getSupportDelegate().start(delegate);
     }
 
     @Override

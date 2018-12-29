@@ -95,8 +95,9 @@ public class IndexDelegate extends BottomItemDelegate {
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
+        /*每个商品的点击事件,连同BottomBar也进行相应的跳转*/
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
-       // mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
+        mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
     }
 
 
