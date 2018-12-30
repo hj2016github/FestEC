@@ -37,7 +37,6 @@ public class SortDelegate extends BottomItemDelegate {
         getSupportDelegate().loadRootFragment(R.id.sort_content_container, ContentDelegate.newInstance(1));
 
     }
-
     @Override
     public boolean onKey(View view, int i, KeyEvent keyEvent) {
         return false;
