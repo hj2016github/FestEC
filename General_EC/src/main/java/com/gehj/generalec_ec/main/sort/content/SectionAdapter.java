@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by 傅令杰
+ * 商品详情的适配器,分别处理头与内容
  */
 
 public class SectionAdapter extends BaseSectionQuickAdapter<SectionBean, BaseViewHolder> {
@@ -24,11 +25,11 @@ public class SectionAdapter extends BaseSectionQuickAdapter<SectionBean, BaseVie
     public SectionAdapter(int layoutResId, int sectionHeadResId, List<SectionBean> data) {
         super(layoutResId, sectionHeadResId, data);
     }
-
+    /*头布局*/
     @Override
     protected void convertHead(BaseViewHolder helper, SectionBean item) {
         helper.setText(R.id.header, item.header);
-        helper.setVisible(R.id.more, item.isMore());
+        helper.setVisible(R.id.more, item.isMore());//更多;
         helper.addOnClickListener(R.id.more);
     }
 

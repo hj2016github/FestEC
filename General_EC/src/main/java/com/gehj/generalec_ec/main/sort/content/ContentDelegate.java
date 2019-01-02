@@ -56,25 +56,24 @@ public class ContentDelegate extends LatteDelegate {
 
     private void initData() {
         RestClient.builder()
-                .url("sort_content_list.php?contentId=" + mContentId)
+                .url("http://mock.eolinker.com/Vw4Pz6ib2c6ac93793e296a2d8acbb4e6ed0b424abea5ae?uri=fec/content?contentId=" + mContentId)
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
                         mData = new SectionDataConverter().convert(response);
                         final SectionAdapter sectionAdapter =
                                 new SectionAdapter(R.layout.item_section_content,
-                                        R.layout.item_section_header, mData);
+                                        R.layout.item_section_header, mData);//参数:内容,头,数据
                         mRecyclerView.setAdapter(sectionAdapter);
                     }
                 })
                 .build()
                 .get();
     }
-
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         final StaggeredGridLayoutManager manager =
-                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);//两列
         mRecyclerView.setLayoutManager(manager);
         initData();
     }

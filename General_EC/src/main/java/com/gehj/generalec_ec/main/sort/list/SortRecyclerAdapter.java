@@ -91,10 +91,11 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
     }
 
     private void switchContent(ContentDelegate delegate) {
+        /*从父fragment找到子fragment之后替换*/
         final LatteDelegate contentDelegate =
                 SupportHelper.findFragment(DELEGATE.getChildFragmentManager(), ContentDelegate.class);
         if (contentDelegate != null) {
-            contentDelegate.getSupportDelegate().replaceFragment(delegate, false);
+            contentDelegate.getSupportDelegate().replaceFragment(delegate, false);//false是否加入返回栈
         }
     }
 }
