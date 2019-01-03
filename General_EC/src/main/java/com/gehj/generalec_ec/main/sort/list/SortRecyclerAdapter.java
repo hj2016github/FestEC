@@ -95,6 +95,7 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
         final LatteDelegate contentDelegate =
                 SupportHelper.findFragment(DELEGATE.getChildFragmentManager(), ContentDelegate.class);
         if (contentDelegate != null) {
+            //TODO 返回栈
             contentDelegate.getSupportDelegate().replaceFragment(delegate, false);//false是否加入返回栈
         }
     }
