@@ -120,13 +120,16 @@ public final class ShopCartAdapter extends MultipleRecyclerAdapter {
                     }
                 });
                 //添加加减事件
+                /*保持与服务器同步,点击一次请求一次,同步服务器地址错的,有空复制原来的变一个地址就行*/
+                /*个人认为讲师的逻辑有问题:应该是先加减成功后再同步服务器*/
+                /*或者结算时候再请求也行,不用每次加减都跟服务器同步*/
                 iconMinus.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         final int currentCount = entity.getField(ShopCartItemFields.COUNT);
                         if (Integer.parseInt(tvCount.getText().toString()) > 1) {
                             RestClient.builder()
-                                    .url("shop_cart_count.php")
+                                    .url("http://mock.eolinker.com/Vw4Pz6ib2c6ac93793e296a2d8acbb4e6ed0b424abea5ae?uri=fec/shopcart")
                                     .loader(mContext)
                                     .params("count", currentCount)
                                     .success(new ISuccess() {
@@ -135,10 +138,12 @@ public final class ShopCartAdapter extends MultipleRecyclerAdapter {
                                             int countNum = Integer.parseInt(tvCount.getText().toString());
                                             countNum--;
                                             tvCount.setText(String.valueOf(countNum));
+                                            //entity.setField(ShopCartItemFields.COUNT,countNum);
                                             if (mCartItemListener != null) {
-                                                mTotalPrice = mTotalPrice - price;
-                                                final double itemTotal = countNum * price;
-                                                mCartItemListener.onItemClick(itemTotal);
+                                                mTotalPrice = mTotalPrice - price;//mTotalPrice是所有的总价
+                                                final double itemTotal = countNum * price;//每一条商品的总价
+                                                /*从实现看讲师没有用itemTotal传的值,而用的mTotalPrice来显示总价*/
+                                                mCartItemListener.onItemClick(itemTotal);//接口回调传值,实时的变化;
                                             }
                                         }
                                     })
@@ -162,6 +167,7 @@ public final class ShopCartAdapter extends MultipleRecyclerAdapter {
                                         int countNum = Integer.parseInt(tvCount.getText().toString());
                                         countNum++;
                                         tvCount.setText(String.valueOf(countNum));
+                                        //entity.setField(ShopCartItemFields.COUNT,countNum);
                                         if (mCartItemListener != null) {
                                             mTotalPrice = mTotalPrice + price;
                                             final double itemTotal = countNum * price;

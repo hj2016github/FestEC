@@ -194,6 +194,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
+        /*让总价初始化正确*/
         mTotalPrice = mAdapter.getTotalPrice();
         mTvTotalPrice.setText(String.valueOf(mTotalPrice));
         checkItemCount();
