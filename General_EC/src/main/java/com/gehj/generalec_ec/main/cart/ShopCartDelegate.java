@@ -39,9 +39,9 @@ import butterknife.OnClick;
 public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, ICartItemListener, IAlPayResultListener {
 
     private ShopCartAdapter mAdapter = null;
-    //购物车数量标记
-    private int mCurrentCount = 0;
-    private int mTotalCount = 0;
+
+    private int mCurrentCount = 0;//购物车数量标记的總數
+    private int mTotalCount = 0;//總數
     private double mTotalPrice = 0.00;
 
     @BindView(R2.id.rv_shop_cart)
@@ -72,7 +72,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
         }
     }
 
-    @OnClick(R2.id.tv_top_shop_cart_remove_selected)
+    @OnClick(R2.id.tv_top_shop_cart_remove_selected)//刪除
     void onClickRemoveSelectedItem() {
         final List<MultipleItemEntity> data = mAdapter.getData();
         //要删除的数据
@@ -85,22 +85,26 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
         }
         for (MultipleItemEntity entity : deleteEntities) {
             int removePosition;
+            mTotalCount = mAdapter.getItemCount();
             final int entityPosition = entity.getField(ShopCartItemFields.POSITION);
+            //TODO 從listview的刪除看數組越界問題
+            /*position是转换数据时候决定的,删除更新时无法更新position变量
+            *连续删除时会有entityPosition大于总数的情况*/
             if (entityPosition > mCurrentCount - 1) {
-                removePosition = entityPosition - (mTotalCount - mCurrentCount);
+                removePosition = entityPosition - (mTotalCount - mCurrentCount);//找到entityPosition在view中的位置;
             } else {
                 removePosition = entityPosition;
             }
-            if (removePosition <= mAdapter.getItemCount()) {
+            if (removePosition <= mAdapter.getItemCount()) {//防止數組越界 TODO 打断点观察为何会数组越界;
                 mAdapter.remove(removePosition);
-                mCurrentCount = mAdapter.getItemCount();
+                mCurrentCount = mAdapter.getItemCount();//移除後的總數;
                 //更新数据
                 mAdapter.notifyItemRangeChanged(removePosition, mAdapter.getItemCount());
             }
         }
         checkItemCount();
     }
-
+    /*清空所有*/
     @OnClick(R2.id.tv_top_shop_cart_clear)
     void onClickClear() {
         mAdapter.getData().clear();
