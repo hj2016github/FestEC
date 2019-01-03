@@ -93,9 +93,9 @@ public final class ShopCartAdapter extends MultipleRecyclerAdapter {
                         .apply(OPTIONS)
                         .into(imgThumb);
 
-                //在左侧勾勾渲染之前改变全选与否状态
+                //在左侧勾勾渲染之前改变全选与否状态(全選必須在前)
                 entity.setField(ShopCartItemFields.IS_SELECTED, mIsSelectedAll);
-                final boolean isSelected = entity.getField(ShopCartItemFields.IS_SELECTED);
+                final boolean isSelected = entity.getField(ShopCartItemFields.IS_SELECTED);//全選的設置;
                 //根据数据状态显示左侧勾勾
                 if (isSelected) {
                     iconIsSelected.setTextColor
@@ -106,7 +106,7 @@ public final class ShopCartAdapter extends MultipleRecyclerAdapter {
                 //添加左侧勾勾点击事件,不要在类上implements,否则点击事件无法对应;
                 iconIsSelected.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) {//單擊每個勾勾的變化
                         /*不能设置成全局变量,随着点击currentSelected进行动态变化*/
                         final boolean currentSelected = entity.getField(ShopCartItemFields.IS_SELECTED);
                         if (currentSelected) {//橘黄色(已经勾选的情况下),将会发生的变化

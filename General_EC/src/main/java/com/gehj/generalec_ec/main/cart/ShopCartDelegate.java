@@ -56,13 +56,14 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
     @OnClick(R2.id.icon_shop_cart_select_all) //listview外的全選;
     void onClickSelectAll() {
         final int tag = (int) mIconSelectAll.getTag();
-        if (tag == 0) {
+        if (tag == 0) {//沒選擇狀態下的點擊;
             mIconSelectAll.setTextColor
                     (ContextCompat.getColor(getContext(), R.color.app_main));
             mIconSelectAll.setTag(1);
-            mAdapter.setIsSelectedAll(true);
+            mAdapter.setIsSelectedAll(true);//設置適配器的全選,發送信號,聯動recycleview的兩個勾勾;
             //更新RecyclerView的显示状态
-            mAdapter.notifyItemRangeChanged(0, mAdapter.getItemCount());
+            //mAdapter.notifyDataSetChanged();//全部更新數據,對性能消耗比較大;
+            mAdapter.notifyItemRangeChanged(0, mAdapter.getItemCount());//部分更新,消耗小;
         } else {
             mIconSelectAll.setTextColor(Color.GRAY);
             mIconSelectAll.setTag(0);
@@ -164,7 +165,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        mIconSelectAll.setTag(0);
+        mIconSelectAll.setTag(0);//必須設置初始值,否則報錯;
     }
 
     @Override
