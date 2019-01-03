@@ -142,7 +142,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
                 .post();
 
     }
-
+/*购物车为0时候的提示*/
     @SuppressWarnings("RestrictedApi")
     private void checkItemCount() {
         final int count = mAdapter.getItemCount();
