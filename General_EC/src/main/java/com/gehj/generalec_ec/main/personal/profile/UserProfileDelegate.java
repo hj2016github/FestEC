@@ -40,7 +40,7 @@ public class UserProfileDelegate extends LatteDelegate {
         final ListBean image = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_AVATAR)
                 .setId(1)
-                .setImageUrl("http://i9.qhimg.com/t017d891ca365ef60b5.jpg")
+                .setImageUrl("file:///android_asset/avatar.jpg")
                 .build();
 
         final ListBean name = new ListBean.Builder()
