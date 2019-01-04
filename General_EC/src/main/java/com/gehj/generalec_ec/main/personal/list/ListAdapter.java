@@ -22,7 +22,7 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .dontAnimate()
             .centerCrop();
-
+    /*设置类型方便区分,在一个recycleview上可以操纵不同xml*/
     public ListAdapter(List<ListBean> data) {
         super(data);
         addItemType(ListItemType.ITEM_NORMAL, R.layout.arrow_item_layout);

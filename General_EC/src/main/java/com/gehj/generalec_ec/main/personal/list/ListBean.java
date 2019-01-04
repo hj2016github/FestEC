@@ -7,6 +7,7 @@ import com.gehj.general_core.delegates.LatteDelegate;
 
 /**
  * Created by 傅令杰
+ * 设置页面的recyclerView的内容,采用buidler模式
  */
 
 public class ListBean implements MultiItemEntity {

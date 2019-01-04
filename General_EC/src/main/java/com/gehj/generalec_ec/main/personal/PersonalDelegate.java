@@ -68,11 +68,11 @@ public class PersonalDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-
+/*以下假数据*/
         final ListBean address = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setId(1)
-                .setDelegate(new AddressDelegate())
+                .setDelegate(new AddressDelegate())//跳转的delegate;
                 .setText("收货地址")
                 .build();
 
