@@ -54,7 +54,7 @@ public class FastPay implements View.OnClickListener {
             window.setGravity(Gravity.BOTTOM);
             window.setWindowAnimations(R.style.anim_panel_up_from_bottom);
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            //设置属性
+            //动态设置属性
             final WindowManager.LayoutParams params = window.getAttributes();
             params.width = WindowManager.LayoutParams.MATCH_PARENT;
             params.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
@@ -77,7 +77,8 @@ public class FastPay implements View.OnClickListener {
     }
 
     private void alPay(int orderId) {
-        final String singUrl = "你的服务端支付地址" + orderId;
+       // final String singUrl = "你的服务端支付地址" + orderId;
+        final String singUrl = "http://app.api.zanzuanshi.com/api/v1/alipay/a=" + orderId;
         //获取签名字符串
         RestClient.builder()
                 .url(singUrl)

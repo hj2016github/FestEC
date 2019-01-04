@@ -114,7 +114,8 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
 
     @OnClick(R2.id.tv_shop_cart_pay)
     void onClickPay() {
-        createOrder();
+       // FastPay.create(ShopCartDelegate.this).beginPayDialog();
+        createOrder();//因为没有生成订单的API,所以弹出框并不显示,上面的注释解掉是可以显示支付对话框的
     }
 
     //创建订单，注意，和支付是没有关系的
