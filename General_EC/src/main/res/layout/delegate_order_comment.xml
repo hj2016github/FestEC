@@ -69,14 +69,14 @@
         android:gravity="top|left"
         android:hint="写下评论"
         android:padding="10dp" />
-<!--
-   <com.flj.latte.ui.widget.AutoPhotoLayout
+
+    <com.ygsj.general_ui.widget.AutoPhotoLayout
         android:id="@+id/custom_auto_photo_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:icon_size="10sp"
         app:item_margin="3"
         app:line_count="5"
-        app:max_count="5" />-->
+        app:max_count="5" />
 
 </LinearLayout>
