@@ -29,7 +29,7 @@ public class ExampleApp extends Application {
                 /*https://www.cnblogs.com/zyw-205520/p/7266225.html?utm_source=debugrun&utm_medium=referral*/
                 //TODO 可以用到大宁等项目中;
                 .withIcon(new FontAwesomeModule())
-                .withIcon(new FontEcModule())
+                .withIcon(new FontEcModule())//自定义字体,从淘宝的icon中直接可以下载;
                 .withLoaderDelayed(1000)
                 .withApiHost("http://127.0.0.1")
                 //.withInterceptor(new DebugInterceptor("test", R.raw.test)) //delegate的地址合起来是http://127.0.0.1/test/
