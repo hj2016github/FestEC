@@ -9,6 +9,7 @@ import com.gehj.generalec_ec.main.personal.list.ListBean;
 
 /**
  * Created by 傅令杰
+ * 单击item跳转的监听;
  */
 
 public class PersonalClickListener extends SimpleClickListener {

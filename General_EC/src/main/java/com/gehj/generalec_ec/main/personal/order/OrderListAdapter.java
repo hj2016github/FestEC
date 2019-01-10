@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Created by 傅令杰
+ * 订单列表适配;
  */
 
 public class OrderListAdapter extends MultipleRecyclerAdapter {
@@ -36,7 +37,7 @@ public class OrderListAdapter extends MultipleRecyclerAdapter {
     protected void convert(MultipleViewHolder holder, MultipleItemEntity entity) {
         super.convert(holder, entity);
         switch (holder.getItemViewType()) {
-            case OrderListItemType.ITEM_ORDER_LIST:
+            case OrderListItemType.ITEM_ORDER_LIST://上面方法传的type类型
                 final AppCompatImageView imageView = holder.getView(R.id.image_order_list);
                 final AppCompatTextView title = holder.getView(R.id.tv_order_list_title);
                 final AppCompatTextView price = holder.getView(R.id.tv_order_list_price);

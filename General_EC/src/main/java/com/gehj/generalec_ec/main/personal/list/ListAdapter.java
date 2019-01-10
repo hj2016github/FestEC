@@ -14,6 +14,8 @@ import java.util.List;
 
 /**
  * Created by 傅令杰
+ * 各种不同类的recycleview的设置;
+ * 1,我的界面下的条目 2,我的头像 3,切换
  */
 
 public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHolder> {
@@ -25,8 +27,8 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
     /*设置类型方便区分,在一个recycleview上可以操纵不同xml*/
     public ListAdapter(List<ListBean> data) {
         super(data);
-        addItemType(ListItemType.ITEM_NORMAL, R.layout.arrow_item_layout);
-        addItemType(ListItemType.ITEM_AVATAR, R.layout.arrow_item_avatar);
+        addItemType(ListItemType.ITEM_NORMAL, R.layout.arrow_item_layout);//personal界面;
+        addItemType(ListItemType.ITEM_AVATAR, R.layout.arrow_item_avatar);//我的头像界面;
         addItemType(ListItemType.ITEM_SWITCH,R.layout.arrow_switch_layout);
     }
 
@@ -37,7 +39,7 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
                 helper.setText(R.id.tv_arrow_text, item.getText());
                 helper.setText(R.id.tv_arrow_value, item.getValue());
                 break;
-            case ListItemType.ITEM_AVATAR:
+            case ListItemType.ITEM_AVATAR://头像的更换
                 Glide.with(mContext)
                         .load(item.getImageUrl())
                         .apply(OPTIONS)

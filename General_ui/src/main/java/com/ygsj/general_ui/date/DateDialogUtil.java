@@ -13,6 +13,7 @@ import java.util.Locale;
 
 /**
  * Created by 傅令杰
+ * 选择生日的对话框接口
  */
 
 public class DateDialogUtil {
@@ -27,10 +28,12 @@ public class DateDialogUtil {
     public void setDateListener(IDateListener listener) {
         this.mDateListener = listener;
     }
+    /*以上回调接口要使用*/
+
 
     public void showDialog(Context context) {
         final LinearLayout ll = new LinearLayout(context);
-        final DatePicker picker = new DatePicker(context);
+        final DatePicker picker = new DatePicker(context);//设置日历选择;
         final LinearLayout.LayoutParams lp =
                 new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT);
@@ -39,13 +42,14 @@ public class DateDialogUtil {
 
         picker.init(1990, 1, 1, new DatePicker.OnDateChangedListener() {
             @Override
-            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                final Calendar calendar = Calendar.getInstance();
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {//初始化日历选择;
+                /*以下为了选择timepiker后,利用Calendar把值传给接口,从而回传给跳转前页面的textview*/
+                final Calendar calendar = Calendar.getInstance();//java包下的
                 calendar.set(year, monthOfYear, dayOfMonth);
                 final SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日", Locale.getDefault());
                 final String data = format.format(calendar.getTime());
                 if(mDateListener!=null){
-                    mDateListener.onDateChange(data);
+                    mDateListener.onDateChange(data);//接口传值,最终返回给点击前的txetview;
                 }
             }
         });

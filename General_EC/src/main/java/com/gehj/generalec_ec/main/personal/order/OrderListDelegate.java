@@ -22,6 +22,7 @@ import butterknife.BindView;
 
 /**
  * Created by 傅令杰
+ * 订单列表;
  */
 
 public class OrderListDelegate extends LatteDelegate {
@@ -40,6 +41,7 @@ public class OrderListDelegate extends LatteDelegate {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Bundle args = getArguments();
+        /*mType是从personal页面传过来的*/
         mType = args.getString(PersonalDelegate.ORDER_TYPE);
     }
 
@@ -52,7 +54,7 @@ public class OrderListDelegate extends LatteDelegate {
         super.onLazyInitView(savedInstanceState);
         RestClient.builder()
                 .loader(getContext())
-                .url("order_list.php")
+                .url("http://mock.eolinker.com/Vw4Pz6ib2c6ac93793e296a2d8acbb4e6ed0b424abea5ae?uri=/fec/orderlist/")
                 .params("type", mType)
                 .success(new ISuccess() {
                     @Override

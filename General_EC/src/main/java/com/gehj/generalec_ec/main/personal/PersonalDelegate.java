@@ -28,6 +28,7 @@ import butterknife.OnClick;
 
 /**
  * Created by 傅令杰
+ * 个人设置页面
  */
 
 public class PersonalDelegate extends BottomItemDelegate {
@@ -49,21 +50,22 @@ public class PersonalDelegate extends BottomItemDelegate {
         startOrderListByType();
     }
 
-    @OnClick(R2.id.img_user_avatar)
+    @OnClick(R2.id.img_user_avatar)//点击头像后的跳转个人简介
     void onClickAvatar() {
         getParentDelegate().getSupportDelegate().start(new UserProfileDelegate());
     }
-
+    //TODO onCreat的bundle传值与intent传值有何不同?
     private void startOrderListByType() {
         final OrderListDelegate delegate = new OrderListDelegate();
-        delegate.setArguments(mArgs);
+        delegate.setArguments(mArgs);//给下一个跳转页面进行传值;
+        /*getParentDelegate():现在的personal页面是内嵌的页面,找到父布局跳转才没有地下的导航*/
         getParentDelegate().getSupportDelegate().start(delegate);
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mArgs = new Bundle();
+        mArgs = new Bundle();//初始化Bundle
     }
 
     @Override
@@ -92,7 +94,7 @@ public class PersonalDelegate extends BottomItemDelegate {
         mRvSettings.setLayoutManager(manager);
         final ListAdapter adapter = new ListAdapter(data);
         mRvSettings.setAdapter(adapter);
-        mRvSettings.addOnItemTouchListener(new PersonalClickListener(this));
+        mRvSettings.addOnItemTouchListener(new PersonalClickListener(this));//单击item跳转;
     }
 
     @Override

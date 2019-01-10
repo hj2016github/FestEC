@@ -11,6 +11,7 @@ import com.gehj.generalec_ec.R;
 
 /**
  * Created by 傅令杰
+ * 姓名设置界面;
  */
 
 public class NameDelegate extends LatteDelegate {

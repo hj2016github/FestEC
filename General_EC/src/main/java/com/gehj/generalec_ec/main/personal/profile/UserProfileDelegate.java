@@ -23,6 +23,7 @@ import butterknife.BindView;
 
 /**
  * Created by 傅令杰
+ * 个人简介界面
  */
 
 public class UserProfileDelegate extends LatteDelegate {
@@ -48,7 +49,7 @@ public class UserProfileDelegate extends LatteDelegate {
                 .setId(2)
                 .setText("姓名")
                 .setDelegate(new NameDelegate())
-                .setValue("未设置姓名")
+                .setValue("葛宏杰")
                 .build();
 
         final ListBean gender = new ListBean.Builder()
@@ -76,6 +77,6 @@ public class UserProfileDelegate extends LatteDelegate {
         mRecyclerView.setLayoutManager(manager);
         final ListAdapter adapter = new ListAdapter(data);
         mRecyclerView.setAdapter(adapter);
-        mRecyclerView.addOnItemTouchListener(new UserProfileClickListener(this));
+        mRecyclerView.addOnItemTouchListener(new UserProfileClickListener(this));//单击跳转;
     }
 }

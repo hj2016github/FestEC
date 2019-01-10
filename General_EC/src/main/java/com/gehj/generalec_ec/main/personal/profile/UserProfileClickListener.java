@@ -39,7 +39,7 @@ public class UserProfileClickListener extends SimpleClickListener {
     @Override
     public void onItemClick(final BaseQuickAdapter adapter, final View view, int position) {
         final ListBean bean = (ListBean) baseQuickAdapter.getData().get(position);
-        final int id = bean.getId();
+        final int id = bean.getId();//id表示头像,年龄,生日等设置...
         switch (id) {
             case 1:
                 //开始照相机或选择图片
@@ -86,22 +86,23 @@ public class UserProfileClickListener extends SimpleClickListener {
                         });
                 //DELEGATE.startCameraWithCheck();
                 break;
-            case 2:
+            case 2://设置姓名,直接跳转姓名设置界面
                 final LatteDelegate nameDelegate = bean.getDelegate();
                 DELEGATE.getSupportDelegate().start(nameDelegate);
                 break;
-            case 3:
-                getGenderDialog(new DialogInterface.OnClickListener() {
+            case 3://设置性别
+                getGenderDialog(new DialogInterface.OnClickListener() {//1,先点击dialog,选择
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int which) {//2,选择后男女后,回调
                         final TextView textView = (TextView) view.findViewById(R.id.tv_arrow_value);
                         textView.setText(mGenders[which]);
                         dialog.cancel();
                     }
                 });
                 break;
-            case 4:
+            case 4://设置生日
                 final DateDialogUtil dateDialogUtil = new DateDialogUtil();
+                /*先定义方法*/
                 dateDialogUtil.setDateListener(new DateDialogUtil.IDateListener() {
                     @Override
                     public void onDateChange(String date) {
@@ -109,7 +110,7 @@ public class UserProfileClickListener extends SimpleClickListener {
                         textView.setText(date);
                     }
                 });
-                dateDialogUtil.showDialog(DELEGATE.getContext());
+                dateDialogUtil.showDialog(DELEGATE.getContext());//后使用方法,接口回调的方法在showDialog()里面;
                 break;
             default:
                 break;
@@ -118,7 +119,7 @@ public class UserProfileClickListener extends SimpleClickListener {
 
     private void getGenderDialog(DialogInterface.OnClickListener listener) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(DELEGATE.getContext());
-        builder.setSingleChoiceItems(mGenders, 0, listener);
+        builder.setSingleChoiceItems(mGenders, 0, listener);//初始化
         builder.show();
     }
 
