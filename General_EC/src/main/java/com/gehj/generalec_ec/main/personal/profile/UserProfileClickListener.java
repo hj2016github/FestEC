@@ -47,12 +47,13 @@ public class UserProfileClickListener extends SimpleClickListener {
                         .addCallback(CallbackType.ON_CROP, new IGlobalCallback<Uri>() {
                             @Override
                             public void executeCallback(Uri args) {
+                               /*拍照设置头像*/
                                 LatteLogger.d("ON_CROP", args);
                                 final ImageView avatar = (ImageView) view.findViewById(R.id.img_arrow_avatar);
                                 Glide.with(DELEGATE)
                                         .load(args)
                                         .into(avatar);
-
+                                /*上传头像给服务器时候进行二次请求,更新服务器头像信息*/
                                 RestClient.builder()
                                         .url(UploadConfig.UPLOAD_IMG)
                                         .loader(DELEGATE.getContext())
@@ -62,7 +63,7 @@ public class UserProfileClickListener extends SimpleClickListener {
                                             public void onSuccess(String response) {
                                                 LatteLogger.d("ON_CROP_UPLOAD", response);
                                                 final String path = JSON.parseObject(response).getJSONObject("result")
-                                                        .getString("path");
+                                                        .getString("path");//取出服务器的头像上传路径;
 
                                                 //通知服务器更新信息
                                                 RestClient.builder()
@@ -72,7 +73,7 @@ public class UserProfileClickListener extends SimpleClickListener {
                                                         .success(new ISuccess() {
                                                             @Override
                                                             public void onSuccess(String response) {
-                                                                //获取更新后的用户信息，然后更新本地数据库
+                                                                //获取更新后的用户信息，然后更新本地数据库(greenDao)
                                                                 //没有本地数据的APP，每次打开APP都请求API，获取信息
                                                             }
                                                         })
