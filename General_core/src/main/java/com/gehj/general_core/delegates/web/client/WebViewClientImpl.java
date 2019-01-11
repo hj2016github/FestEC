@@ -9,7 +9,7 @@ import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.delegates.IPageLoadListener;
 import com.gehj.general_core.delegates.web.WebDelegate;
 import com.gehj.general_core.delegates.web.route.Router;
-import com.gehj.general_core.ui.LatteLoader;
+import com.gehj.general_core.ui.loader.LatteLoader;
 import com.gehj.general_core.util.log.LatteLogger;
 
 

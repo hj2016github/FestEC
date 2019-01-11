@@ -17,7 +17,7 @@ import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.delegates.LatteDelegate;
 import com.gehj.general_core.net.RestClient;
 import com.gehj.general_core.net.callback.ISuccess;
-import com.gehj.general_core.ui.LatteLoader;
+import com.gehj.general_core.ui.loader.LatteLoader;
 import com.gehj.general_core.util.log.LatteLogger;
 import com.gehj.general_core.wechat.LatteWeChat;
 import com.gehj.generalec_ec.R;

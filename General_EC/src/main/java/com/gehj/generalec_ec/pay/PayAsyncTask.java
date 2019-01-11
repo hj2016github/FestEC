@@ -3,7 +3,7 @@ package com.gehj.generalec_ec.pay;
 import android.app.Activity;
 import android.os.AsyncTask;
 
-import com.gehj.general_core.ui.LatteLoader;
+import com.gehj.general_core.ui.loader.LatteLoader;
 import com.gehj.general_core.util.log.LatteLogger;
 import com.alipay.sdk.app.PayTask;
 

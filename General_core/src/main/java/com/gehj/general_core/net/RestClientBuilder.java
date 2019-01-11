@@ -6,7 +6,7 @@ import com.gehj.general_core.net.callback.IError;
 import com.gehj.general_core.net.callback.IFailure;
 import com.gehj.general_core.net.callback.IRequest;
 import com.gehj.general_core.net.callback.ISuccess;
-import com.gehj.general_core.ui.LoaderStyle;
+import com.gehj.general_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.WeakHashMap;

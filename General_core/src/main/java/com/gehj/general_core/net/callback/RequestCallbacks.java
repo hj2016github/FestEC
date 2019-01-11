@@ -6,8 +6,8 @@ import android.os.Handler;
 import com.gehj.general_core.app.ConfigKeys;
 import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.net.RestCreator;
-import com.gehj.general_core.ui.LatteLoader;
-import com.gehj.general_core.ui.LoaderStyle;
+import com.gehj.general_core.ui.loader.LatteLoader;
+import com.gehj.general_core.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;

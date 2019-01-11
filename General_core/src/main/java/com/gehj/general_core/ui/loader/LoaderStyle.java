@@ -1,4 +1,4 @@
-package com.gehj.general_core.ui;
+package com.gehj.general_core.ui.loader;
 
 /**
  * Created by 傅令杰 on 2017/4/2

@@ -8,8 +8,8 @@ import com.gehj.general_core.net.callback.IRequest;
 import com.gehj.general_core.net.callback.ISuccess;
 import com.gehj.general_core.net.callback.RequestCallbacks;
 import com.gehj.general_core.net.download.DownloadHandler;
-import com.gehj.general_core.ui.LatteLoader;
-import com.gehj.general_core.ui.LoaderStyle;
+import com.gehj.general_core.ui.loader.LatteLoader;
+import com.gehj.general_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

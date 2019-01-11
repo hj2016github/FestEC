@@ -8,13 +8,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
-/*import com.flj.latte.ui.camera.CameraImageBean;
-import com.flj.latte.ui.camera.LatteCamera;
-import com.flj.latte.ui.camera.RequestCodes;
-import com.flj.latte.ui.scanner.ScannerDelegate;
-import com.flj.latte.util.callback.CallbackManager;
-import com.flj.latte.util.callback.CallbackType;
-import com.flj.latte.util.callback.IGlobalCallback;
+import com.gehj.general_core.ui.camera.CameraImageBean;
+import com.gehj.general_core.ui.camera.LatteCamera;
+import com.gehj.general_core.ui.camera.RequestCodes;
+import com.gehj.general_core.ui.scanner.ScannerDelegate;
+import com.gehj.general_core.util.callback.CallbackManager;
+import com.gehj.general_core.util.callback.CallbackType;
+import com.gehj.general_core.util.callback.IGlobalCallback;
 import com.yalantis.ucrop.UCrop;
 
 import permissions.dispatcher.NeedsPermission;
@@ -22,20 +22,21 @@ import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
 import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
-import permissions.dispatcher.RuntimePermissions;*/
+import permissions.dispatcher.RuntimePermissions;
+
 
 /**
  * Created by 傅令杰 on 2017/4/2
- * 这个类主要处理动态权限;
+ * 用permissionsdispatcher(第三方框架)处理动态权限;
  */
 
-//@RuntimePermissions
+@RuntimePermissions
 public abstract class PermissionCheckerDelegate extends BaseDelegate {
 
-    //不是直接调用方法
-  /*  @NeedsPermission(Manifest.permission.CAMERA)
-    void startCamera() {
-        LatteCamera.start(this);
+    //不是直接调用方法,生成代码使用
+  @NeedsPermission(Manifest.permission.CAMERA)
+    void startCamera() {//不能private,rebuild后生成PermissionCheckerDelegatePermissionsDispatcher;
+        LatteCamera.start(this);//启动相机对话框
     }
 
     //这个是真正调用的方法
@@ -100,13 +101,13 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
             switch (requestCode) {
                 case RequestCodes.TAKE_PHOTO:
                     final Uri resultUri = CameraImageBean.getInstance().getPath();
-                    UCrop.of(resultUri, resultUri)
+                    UCrop.of(resultUri, resultUri)//剪裁过的图片覆盖原来的图片
                             .withMaxResultSize(400, 400)
                             .start(getContext(), this);
                     break;
                 case RequestCodes.PICK_PHOTO:
                     if (data != null) {
-                        final Uri pickPath = data.getData();
+                        final Uri pickPath = data.getData();//原路径
                         //从相册选择后需要有个路径存放剪裁过的图片
                         final String pickCropPath = LatteCamera.createCropFile().getPath();
                         UCrop.of(pickPath, Uri.parse(pickCropPath))
@@ -115,6 +116,7 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                     }
                     break;
                 case RequestCodes.CROP_PHOTO:
+                    /*解耦:接口传值,为了将来写方法比较灵活,用的时候方便的进行回调*/
                     final Uri cropUri = UCrop.getOutput(data);
                     //拿到剪裁后的数据进行处理
                     @SuppressWarnings("unchecked")
@@ -132,5 +134,5 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                     break;
             }
         }
-    }*/
+    }
 }

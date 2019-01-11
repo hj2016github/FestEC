@@ -84,7 +84,7 @@ public class UserProfileClickListener extends SimpleClickListener {
                                         .upload();
                             }
                         });
-                //DELEGATE.startCameraWithCheck();
+                DELEGATE.startCameraWithCheck();
                 break;
             case 2://设置姓名,直接跳转姓名设置界面
                 final LatteDelegate nameDelegate = bean.getDelegate();
