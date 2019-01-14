@@ -50,13 +50,13 @@ public class ExampleApp extends Application {
         //开启极光推送
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
-
+        /*解耦:在onCreat中进行初始化接口,之后再core的setting界面进行回调*/
         CallbackManager.getInstance()
                 .addCallback(CallbackType.TAG_OPEN_PUSH, new IGlobalCallback() {
                     @Override
                     public void executeCallback(@Nullable Object args) {
                         if (JPushInterface.isPushStopped(Latte.getApplicationContext())) {
-                            //开启极光推送
+                            //极光推送结束,开启极光推送
                             JPushInterface.setDebugMode(true);
                             JPushInterface.init(Latte.getApplicationContext());
                         }
@@ -65,6 +65,7 @@ public class ExampleApp extends Application {
                 .addCallback(CallbackType.TAG_STOP_PUSH, new IGlobalCallback() {
                     @Override
                     public void executeCallback(@Nullable Object args) {
+                        //极光推送没有结束,结束极光推送
                         if (!JPushInterface.isPushStopped(Latte.getApplicationContext())) {
                             JPushInterface.stopPush(Latte.getApplicationContext());
                         }

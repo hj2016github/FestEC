@@ -40,7 +40,7 @@ public class AboutDelegate extends LatteDelegate {
                     public void onSuccess(String response) {
                         final String info = JSON.parseObject(response).getString("data");
                         mTextView.setText(info);
-                    }
+                     }
                 })
                 .build()
                 .get();

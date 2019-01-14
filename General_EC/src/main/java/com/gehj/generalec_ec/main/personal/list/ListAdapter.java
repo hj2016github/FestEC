@@ -29,7 +29,7 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
         super(data);
         addItemType(ListItemType.ITEM_NORMAL, R.layout.arrow_item_layout);//personal界面;
         addItemType(ListItemType.ITEM_AVATAR, R.layout.arrow_item_avatar);//我的头像界面;
-        addItemType(ListItemType.ITEM_SWITCH,R.layout.arrow_switch_layout);
+        addItemType(ListItemType.ITEM_SWITCH,R.layout.arrow_switch_layout);//消息推送的开关;
     }
 
     @Override
@@ -48,6 +48,7 @@ public class ListAdapter extends BaseMultiItemQuickAdapter<ListBean, BaseViewHol
             case ListItemType.ITEM_SWITCH:
                 helper.setText(R.id.tv_arrow_switch_text,item.getText());
                 final SwitchCompat switchCompat = helper.getView(R.id.list_item_switch);
+                /*回调监听*/
                 switchCompat.setChecked(true);
                 switchCompat.setOnCheckedChangeListener(item.getmOnCheckedChangeListener());
                 break;
