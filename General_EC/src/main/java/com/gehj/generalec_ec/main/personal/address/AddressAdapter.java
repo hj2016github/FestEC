@@ -44,7 +44,7 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
                     @Override
                     public void onClick(View v) {
                         RestClient.builder()
-                                .url("address.php")
+                                .url("http://mock.eolinker.com/Vw4Pz6ib2c6ac93793e296a2d8acbb4e6ed0b424abea5ae?uri=/fec/address")//没有写后台服务,删除后并不同步;
                                 .params("id", id)
                                 .success(new ISuccess() {
                                     @Override
@@ -53,7 +53,7 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
                                     }
                                 })
                                 .build()
-                                .post();
+                                .get();
                     }
                 });
 

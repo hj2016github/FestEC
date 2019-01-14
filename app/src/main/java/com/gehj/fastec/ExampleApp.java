@@ -5,9 +5,14 @@ import android.app.Application;
 import com.facebook.stetho.Stetho;
 import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.net.interceptors.DebugInterceptor;
+import com.gehj.general_core.util.callback.CallbackManager;
+import com.gehj.general_core.util.callback.CallbackType;
+import com.gehj.general_core.util.callback.IGlobalCallback;
 import com.gehj.generalec_ec.database.DatabaseManager;
 import com.gehj.generalec_ec.icon.FontEcModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
+
+import android.support.annotation.Nullable;
 import android.support.multidex.MultiDexApplication;
 
 
@@ -39,10 +44,10 @@ public class ExampleApp extends Application {
                // .withWebEvent("test", new TestEvent())
               //  .withWebEvent("share", new ShareEvent())
                 .configure();
-        initStetho();
+       // initStetho();
         DatabaseManager.getInstance().init(this);//初始化greenDao;
 
-       /* //开启极光推送
+        //开启极光推送
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
 
@@ -64,7 +69,7 @@ public class ExampleApp extends Application {
                             JPushInterface.stopPush(Latte.getApplicationContext());
                         }
                     }
-                });*/
+                });
     }
 
     private void initStetho() {

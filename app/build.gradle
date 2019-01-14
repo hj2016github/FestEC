@@ -46,5 +46,13 @@ dependencies {
     compile 'cn.jiguang.sdk:jpush:3.0.1'
     compile 'cn.jiguang.sdk:jcore:1.1.0'
     // https://mvnrepository.com/artifact/com.facebook.stetho/stetho
-    compile group: 'com.facebook.stetho', name: 'stetho', version: '1.4.2'
+    compile 'com.facebook.stetho:stetho:1.4.2'
+    compile files('libs/MobCommons-2016.1222.1756.jar')
+    compile files('libs/MobTools-2016.1222.1756.jar')
+    compile files('libs/ShareSDK-Core-2.8.0.jar')
+    compile files('libs/ShareSDK-ShortMessage-2.8.0.jar')
+    compile files('libs/ShareSDK-Wechat-2.8.0.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.8.0.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.8.0.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.8.0.jar')
 }

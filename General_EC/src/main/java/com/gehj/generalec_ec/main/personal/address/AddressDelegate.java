@@ -37,7 +37,7 @@ public class AddressDelegate extends LatteDelegate implements ISuccess {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         RestClient.builder()
-                .url("address.php")
+                .url("http://mock.eolinker.com/Vw4Pz6ib2c6ac93793e296a2d8acbb4e6ed0b424abea5ae?uri=/fec/address")
                 .loader(getContext())
                 .success(this)
                 .build()
