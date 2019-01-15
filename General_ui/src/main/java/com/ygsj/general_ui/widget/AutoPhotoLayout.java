@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 /**
  * Created by 傅令杰
+ *
  */
 
 public final class AutoPhotoLayout extends LinearLayoutCompat {
@@ -38,11 +39,11 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
     private LayoutParams mParams = null;
     //要删除的图片ID
     private int mDeleteId = 0;
-    private AppCompatImageView mTargetImageVew = null;
+    private AppCompatImageView mTargetImageVew = null;//选中的图片;
    // private final int mImageMargin;
     private LatteDelegate mDelegate = null;
-    private ArrayList<View> mLineViews = null;
-    private AlertDialog mTargetDialog = null;
+    private ArrayList<View> mLineViews = null;//一行有几张图;
+    private AlertDialog mTargetDialog = null;//底部弹出的对话框;
     private static final String ICON_TEXT = "{fa-plus}";
    // private final float mIconSize;
 

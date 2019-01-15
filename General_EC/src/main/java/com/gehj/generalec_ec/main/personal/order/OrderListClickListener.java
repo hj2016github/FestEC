@@ -7,6 +7,7 @@ import com.chad.library.adapter.base.listener.SimpleClickListener;
 
 /**
  * Created by 傅令杰
+ * 订单条目的跳转监听;
  */
 
 public class OrderListClickListener extends SimpleClickListener {
@@ -19,7 +20,7 @@ public class OrderListClickListener extends SimpleClickListener {
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        DELEGATE.getSupportDelegate().start(new OrderCommentDelegate());
+        DELEGATE.getSupportDelegate().start(new OrderCommentDelegate());//点击跳转评论页面;
     }
 
     @Override
