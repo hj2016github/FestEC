@@ -21,34 +21,37 @@ import com.bumptech.glide.request.RequestOptions;
 
 import com.gehj.general_core.delegates.LatteDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
+import com.ygsj.general_ui.R;
 //import com.ygsj.general_ui.R;
 
 import java.util.ArrayList;
 
 /**
  * Created by 傅令杰
- *
+ * 评价上传图片的view
+ * view自定义的属性在attrs.xml中,在layout文件中直接使用自定义控件的属性;
  */
-
+//TODO: android layout中app的命名空间与android命名空间的不同;
+//TODO 这个view如果写好了,直接封成一个工具放在github就可以用;
 public final class AutoPhotoLayout extends LinearLayoutCompat {
 
     private int mCurrentNum = 0;
-   // private final int mMaxNum;
-    //private final int mMaxLineNum;
+    private final int mMaxNum;
+    private final int mMaxLineNum;
     private IconTextView mIconAdd = null;
     private LayoutParams mParams = null;
     //要删除的图片ID
     private int mDeleteId = 0;
     private AppCompatImageView mTargetImageVew = null;//选中的图片;
-   // private final int mImageMargin;
+    private final int mImageMargin;
     private LatteDelegate mDelegate = null;
-    private ArrayList<View> mLineViews = null;//一行有几张图;
+    private ArrayList<View> mLineViews = null;//一行的viwe;
     private AlertDialog mTargetDialog = null;//底部弹出的对话框;
     private static final String ICON_TEXT = "{fa-plus}";
-   // private final float mIconSize;
+    private final float mIconSize;
 
-    private final ArrayList<ArrayList<View>> ALL_VIEWS = new ArrayList<>();
-    private final ArrayList<Integer> LINE_HEIGHTS = new ArrayList<>();
+    private final ArrayList<ArrayList<View>> ALL_VIEWS = new ArrayList<>();//所有行的集合;
+    private final ArrayList<Integer> LINE_HEIGHTS = new ArrayList<>();//所有高度的集合;
 
     //防止多次的测量和布局过程
     private boolean mIsOnceInitOnMeasure = false;
@@ -68,12 +71,12 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
 
     public AutoPhotoLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-       // final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.camera_flow_layout);
-       // mMaxNum = typedArray.getInt(R.styleable.camera_flow_layout_max_count, 1);
-       // mMaxLineNum = typedArray.getInt(R.styleable.camera_flow_layout_line_count, 3);
-       // mImageMargin = typedArray.getInt(R.styleable.camera_flow_layout_item_margin, 0);
-       // mIconSize = typedArray.getDimension(R.styleable.camera_flow_layout_icon_size, 20);
-       // typedArray.recycle();
+         final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.camera_flow_layout);
+        mMaxNum = typedArray.getInt(R.styleable.camera_flow_layout_max_count, 1);
+        mMaxLineNum = typedArray.getInt(R.styleable.camera_flow_layout_line_count, 3);
+        mImageMargin = typedArray.getInt(R.styleable.camera_flow_layout_item_margin, 0);
+        mIconSize = typedArray.getDimension(R.styleable.camera_flow_layout_icon_size, 20);
+        typedArray.recycle();
     }
 
     public final void setDelegate(LatteDelegate delegate) {
@@ -100,16 +103,16 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
                 mTargetDialog.show();
                 final Window window = mTargetDialog.getWindow();
                 if (window != null) {
-                    //window.setContentView(R.layout.dialog_image_click_panel);
+                    window.setContentView(R.layout.dialog_image_click_panel);
                     window.setGravity(Gravity.BOTTOM);
-                   // window.setWindowAnimations(R.style.anim_panel_up_from_bottom);
+                    window.setWindowAnimations(R.style.anim_panel_up_from_bottom);
                     window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     final WindowManager.LayoutParams params = window.getAttributes();
                     params.width = WindowManager.LayoutParams.MATCH_PARENT;
                     params.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
                     params.dimAmount = 0.5f;
                     window.setAttributes(params);
-                    /*window.findViewById(R.id.dialog_image_clicked_btn_delete)
+                    window.findViewById(R.id.dialog_image_clicked_btn_delete)
                             .setOnClickListener(new OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -132,8 +135,8 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
                                     }
                                     mTargetDialog.cancel();
                                 }
-                            });*/
-                    /*window.findViewById(R.id.dialog_image_clicked_btn_undetermined)
+                            });
+                    window.findViewById(R.id.dialog_image_clicked_btn_undetermined)
                             .setOnClickListener(new OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -146,7 +149,7 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
                                 public void onClick(View v) {
                                     mTargetDialog.cancel();
                                 }
-                            });*/
+                            });
                 }
             }
         });
@@ -154,18 +157,18 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
         this.addView(mTargetImageVew, mCurrentNum);
         mCurrentNum++;
         //当天家数目大于mMaxNum时，自动隐藏添加按钮
-       /* if (mCurrentNum >= mMaxNum) {
+       if (mCurrentNum >= mMaxNum) {
             mIconAdd.setVisibility(View.GONE);
-        }*/
+        }
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        final int sizeWith = MeasureSpec.getSize(widthMeasureSpec);
-        final int modeWith = MeasureSpec.getMode(widthMeasureSpec);
+        final int sizeWith = MeasureSpec.getSize(widthMeasureSpec);//精确测量模式的宽高
+        final int modeWith = MeasureSpec.getMode(widthMeasureSpec);//非精确测量模式的宽高;
         final int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
         final int modeHeight = MeasureSpec.getMode(heightMeasureSpec);
-        //wrap_content
+        //整个控件的宽高;
         int width = 0;
         int height = 0;
         //记录每一行的宽度与高度
@@ -177,43 +180,43 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
             final View child = getChildAt(i);
             //测量子View的宽和高
             measureChild(child, widthMeasureSpec, heightMeasureSpec);
-            //的搭配LayoutParams
-            final MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
+            /*测量子元素后,得到搭配LayoutParams*/
+            final MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();//测量间距;
             //子View占据的宽度
             final int childWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
             //子View占据的高度
             final int childHeight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
             //换行
-            if (lineWith + childWidth > sizeWith - getPaddingLeft() - getPaddingRight()) {
+            if (lineWith + childWidth > sizeWith - getPaddingLeft() - getPaddingRight()) {//换行时候,lineWith已经在else里累加;
                 //对比得到最大宽度
-                width = Math.max(width, lineWith);
+                width = Math.max(width, lineWith);//换行后,撑满子控件的行宽为整个控件的宽;
                 //重置lineWidth
-                lineWith = childWidth;
-                height += lineHeight;
+                lineWith = childWidth;//重置为第二行的with
+                height += lineHeight;//height相当于lineHeight的累加基类,但是在这里没有累加;在206进行真正的累加;
                 lineHeight = childHeight;
             } else {
                 //未换行
                 //叠加行宽
-                lineWith += childWidth;
+                lineWith += childWidth;//可见lineWith相当于childWidth的一个累加;
                 //得到当前最大的高度
                 lineHeight = Math.max(lineHeight, childHeight);
             }
             //最后一个子控件
             if (i == cCount - 1) {
-                width = Math.max(lineWith, width);
-                //判断是否超过最大拍照限制
-                height += lineHeight;
+                width = Math.max(lineWith, width);//通过叠加,width是死的=撑满的子控件的行宽,lineWith是随时变化的
+                height += lineHeight;//lineHeight进行叠加;
             }
+            //TODO 印象里应该是一个不规则矩形,该如何处理?
         }
         setMeasuredDimension(
                 modeWith == MeasureSpec.EXACTLY ? sizeWith : width + getPaddingLeft() + getPaddingRight(),
                 modeHeight == MeasureSpec.EXACTLY ? sizeHeight : height + getPaddingTop() + getPaddingBottom()
         );
         //设置一行所有图片的宽高
-        //final int imageSideLen = sizeWith / mMaxLineNum;
+        final int imageSideLen = sizeWith / mMaxLineNum;
         //只初始化一次
-        if (!mIsOnceInitOnMeasure) {
-           // mParams = new LayoutParams(imageSideLen, imageSideLen);
+        if (!mIsOnceInitOnMeasure) {//没测量过进行测量,测量过就不进行测量,节省内存;
+           mParams = new LayoutParams(imageSideLen, imageSideLen);
             mIsOnceInitOnMeasure = true;
         }
     }
@@ -222,11 +225,11 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         ALL_VIEWS.clear();
         LINE_HEIGHTS.clear();
-        // 当前ViewGroup的宽度
-        final int width = getWidth();
+
+        final int width = getWidth();  // 当前ViewGroup的宽度
         int lineWidth = 0;
         int lineHeight = 0;
-        if (!mHasInitOnLayout) {
+        if (!mHasInitOnLayout) {//onLayout的要反复调用,这里用单例,减少内存消耗;
             mLineViews = new ArrayList<>();
             mHasInitOnLayout = true;
         }
@@ -248,10 +251,11 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
                 lineHeight = childHeight + lp.topMargin + lp.bottomMargin;
                 //重置View集合
                 mLineViews.clear();
-            }
+            }//TODO 为何不用else;
+            /*没有换行的情况*/
             lineWidth += childWith + lp.leftMargin + lp.rightMargin;
-            lineHeight = Math.max(lineHeight, lineHeight + lp.topMargin + lp.bottomMargin);
-            mLineViews.add(child);
+            lineHeight = Math.max(lineHeight, lineHeight + lp.topMargin + lp.bottomMargin);//TODO
+            mLineViews.add(child);//一行的
         }
         //处理最后一行
         LINE_HEIGHTS.add(lineHeight);
@@ -273,37 +277,38 @@ public final class AutoPhotoLayout extends LinearLayoutCompat {
                     continue;
                 }
                 final MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
-                //设置子View的边距
+                //设置子View的边距,以左上为准,不计右下的margin;
                 final int lc = left + lp.leftMargin;
                 final int tc = top + lp.topMargin;
-               // final int rc = lc + child.getMeasuredWidth() - mImageMargin;
+                final int rc = lc + child.getMeasuredWidth() - mImageMargin;
                 final int bc = tc + child.getMeasuredHeight();
                 //为子View进行布局
-                //child.layout(lc, tc, rc, bc);
-                left += child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
+                child.layout(lc, tc, rc, bc);
+                left += child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;//这个循环的目的,行内子view向右移动;
             }
             left = getPaddingLeft();
-            top += lineHeight;
+            top += lineHeight;//子view换行后向下移动;
         }
-        mIconAdd.setLayoutParams(mParams);
-        mHasInitOnLayout = false;
+        mIconAdd.setLayoutParams(mParams);//TODO 有问题;
+        mHasInitOnLayout = false;//因为要反复调用,把这个值变成初始值;
     }
 
     private void initAddIcon() {
         mIconAdd = new IconTextView(getContext());
         mIconAdd.setText(ICON_TEXT);
         mIconAdd.setGravity(Gravity.CENTER);
-        //mIconAdd.setTextSize(mIconSize);
-       // mIconAdd.setBackgroundResource(R.drawable.border_text);
-        /*mIconAdd.setOnClickListener(new OnClickListener() {
+        mIconAdd.setTextSize(mIconSize);
+        mIconAdd.setBackgroundResource(R.drawable.border_text);//周围的边;
+        mIconAdd.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDelegate.startCameraWithCheck();
+                mDelegate.startCameraWithCheck();//打开相机
             }
-        });*/
+        });
         this.addView(mIconAdd);
     }
 
+    /*xml加载结束调用dialog*/
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();

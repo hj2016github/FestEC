@@ -69,6 +69,10 @@ public class CameraHandler implements View.OnClickListener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             final ContentValues contentValues = new ContentValues(1);
             contentValues.put(MediaStore.Images.Media.DATA, tempFile.getPath());
+            //TODO 7.0 以上需要重新写权限;
+            //需要参考文章:https://stackoverflow.com/questions/47735140/securityexception-permission-denial-reading-com-android-providers-media-mediap?rq=1
+            //https://stackoverflow.com/questions/37672338/java-lang-securityexception-permission-denial-reading-com-android-providers-me
+
             final Uri uri = DELEGATE.getContext().getContentResolver().
                     insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
             //需要讲Uri路径转化为实际路径

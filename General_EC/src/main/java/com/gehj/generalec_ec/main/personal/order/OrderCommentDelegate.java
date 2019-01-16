@@ -22,6 +22,7 @@ import butterknife.OnClick;
 
 /**
  * Created by 傅令杰
+ * 商品评论界面,五角星以及上传图片控件;
  */
 
 public class OrderCommentDelegate extends LatteDelegate {
@@ -45,7 +46,7 @@ public class OrderCommentDelegate extends LatteDelegate {
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         mAutoPhotoLayout.setDelegate(this);
         CallbackManager.getInstance()
-                .addCallback(CallbackType.ON_CROP, new IGlobalCallback<Uri>() {
+                .addCallback(CallbackType.ON_CROP, new IGlobalCallback<Uri>() {//ON_CROP裁剪上传的标志;
                     @Override
                     public void executeCallback(@Nullable Uri args) {
                         mAutoPhotoLayout.onCropTarget(args);

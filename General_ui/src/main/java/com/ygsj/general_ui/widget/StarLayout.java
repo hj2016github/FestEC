@@ -49,8 +49,8 @@ public class StarLayout extends LinearLayoutCompat implements View.OnClickListen
             lp.weight = 1;
             star.setLayoutParams(lp);
             star.setText(ICON_UN_SELECT);//默认的初始状态;
-            //star.setTag(R.id.star_count, i);//设置的是第几颗星;R.id.star_count是在ids.xml下放着;
-            //star.setTag(R.id.star_is_select, false);
+            star.setTag(R.id.star_count, i);//设置的是第几颗星;R.id.star_count是在ids.xml下放着;
+            star.setTag(R.id.star_is_select, false);
             star.setOnClickListener(this);
             STARS.add(star);
             this.addView(star);

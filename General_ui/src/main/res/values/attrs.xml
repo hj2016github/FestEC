@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+<!--在AutoPhoto中的自定义控件中的属性;-->
     <!--AutoPhotoLayout-->
     <declare-styleable name="camera_flow_layout">
         <attr name="max_count" format="integer" />
