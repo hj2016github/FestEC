@@ -24,6 +24,7 @@ import com.gehj.general_core.util.callback.IGlobalCallback;
 import com.gehj.generalec_ec.R;
 import com.gehj.generalec_ec.R2;
 import com.gehj.generalec_ec.main.EcBottomDelegate;
+import com.gehj.generalec_ec.main.index.search.SearchDelegate;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.ygsj.general_ui.recycler.BaseDecoration;
 import com.ygsj.general_ui.refresh.RefreshHandler;
@@ -37,8 +38,8 @@ import butterknife.OnClick;
  * Created by 傅令杰
  */
 
-public class IndexDelegate extends BottomItemDelegate {
-        //implements View.OnFocusChangeListener {
+public class IndexDelegate extends BottomItemDelegate implements View.OnFocusChangeListener {
+
 
     @BindView(R2.id.rv_index)
     RecyclerView mRecyclerView = null;
@@ -82,7 +83,7 @@ public class IndexDelegate extends BottomItemDelegate {
                         Toast.makeText(getContext(), "得到的二维码是" + args, Toast.LENGTH_LONG).show();
                     }
                 });
-       // mSearchView.setOnFocusChangeListener(this);
+          mSearchView.setOnFocusChangeListener(this);
     }
     /*下拉刷新,在懒加载中进行调用*/
     private void initRefreshLayout() {
@@ -126,10 +127,10 @@ public class IndexDelegate extends BottomItemDelegate {
         return false;
     }
 
-   /* @Override
+  @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) {
             getParentDelegate().getSupportDelegate().start(new SearchDelegate());
         }
-    }*/
+    }
 }
