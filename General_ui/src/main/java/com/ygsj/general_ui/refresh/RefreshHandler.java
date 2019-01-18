@@ -79,11 +79,11 @@ public class RefreshHandler
     }
 
     private void paging(final String url) {
-        final int pageSize = BEAN.getPageSize();
-        final int currentCount = BEAN.getCurrentCount();
-        final int total = BEAN.getTotal();
-        final int index = BEAN.getPageIndex();
-
+        final int pageSize = BEAN.getPageSize();//一页几条数据
+        final int currentCount = BEAN.getCurrentCount();//当前记录item的数量;
+        final int total = BEAN.getTotal();//总item数;
+        final int index = BEAN.getPageIndex();//当前页码数;
+        //当条数没有一页的数据,或者++的条数超过总数,不进行分页
         if (mAdapter.getData().size() < pageSize || currentCount >= total) {
             mAdapter.loadMoreEnd(true);
         } else {
@@ -95,7 +95,7 @@ public class RefreshHandler
                             .success(new ISuccess() {
                                 @Override
                                 public void onSuccess(String response) {
-                                    LatteLogger.json("paging", response);
+                                   // LatteLogger.json("paging", response);
                                     CONVERTER.clearData();
                                     mAdapter.addData(CONVERTER.setJsonData(response).convert());
                                     //累加数量
