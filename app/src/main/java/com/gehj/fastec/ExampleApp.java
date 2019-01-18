@@ -3,6 +3,8 @@ package com.gehj.fastec;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
+import com.gehj.fastec.event.ShareEvent;
+import com.gehj.fastec.event.TestEvent;
 import com.gehj.general_core.app.Latte;
 import com.gehj.general_core.net.interceptors.DebugInterceptor;
 import com.gehj.general_core.util.callback.CallbackManager;
@@ -41,8 +43,8 @@ public class ExampleApp extends Application {
                 .withWeChatAppId("你的微信AppKey")//本项目在微信登录无法回调;
                 .withWeChatAppSecret("你的微信AppSecret")//本项目在微信登录无法回调;
                 .withJavascriptInterface("latte")
-               // .withWebEvent("test", new TestEvent())
-              //  .withWebEvent("share", new ShareEvent())
+                .withWebEvent("test", new TestEvent())
+                .withWebEvent("share", new ShareEvent())//一键分享
                 .configure();
        // initStetho();
         DatabaseManager.getInstance().init(this);//初始化greenDao;

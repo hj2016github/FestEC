@@ -6,10 +6,11 @@ import com.gehj.general_core.delegates.web.event.Event;
 import com.gehj.general_core.util.log.LatteLogger;
 
 import cn.sharesdk.framework.ShareSDK;
-//import cn.sharesdk.onekeyshare.OnekeyShare;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 /**
  * Created by 傅令杰
+ * 一键分享
  */
 
 public class ShareEvent extends Event {
@@ -26,13 +27,13 @@ public class ShareEvent extends Event {
         final String text = object.getString("text");
 
         ShareSDK.initSDK(getContext());
-       /* final OnekeyShare oks = new OnekeyShare();
+        final OnekeyShare oks = new OnekeyShare();
         oks.disableSSOWhenAuthorize();
         oks.setTitle(title);
         oks.setText(text);
         oks.setImageUrl(imageUrl);
         oks.setUrl(url);
-        oks.show(getContext());*/
+        oks.show(getContext());
 
         return null;
     }
