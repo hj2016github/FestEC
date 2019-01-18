@@ -37,7 +37,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:paddingRight="10dp"
-                android:text="{icon-scan}"
+                android:text="{fa-qrcode}"
                 android:textColor="@android:color/white"
                 android:textSize="25sp" />
             <!--搜索框,搜索这样硬编码的字体gradle时候容易报错,包括注解-->

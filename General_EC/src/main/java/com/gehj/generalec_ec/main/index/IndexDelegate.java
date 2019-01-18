@@ -18,6 +18,9 @@ import android.widget.Toast;
 import com.gehj.general_core.delegates.bottom.BottomItemDelegate;
 import com.gehj.general_core.net.RestClient;
 import com.gehj.general_core.net.callback.ISuccess;
+import com.gehj.general_core.util.callback.CallbackManager;
+import com.gehj.general_core.util.callback.CallbackType;
+import com.gehj.general_core.util.callback.IGlobalCallback;
 import com.gehj.generalec_ec.R;
 import com.gehj.generalec_ec.R2;
 import com.gehj.generalec_ec.main.EcBottomDelegate;
@@ -50,10 +53,10 @@ public class IndexDelegate extends BottomItemDelegate {
 
     private RefreshHandler mRefreshHandler = null;
 
-   // @OnClick(R2.id.icon_index_scan)
-   // void onClickScanQrCode() {
-    //    startScanWithCheck(this.getParentDelegate());
-   // }
+   @OnClick(R2.id.icon_index_scan)
+   void onClickScanQrCode() {
+       startScanWithCheck(this.getParentDelegate());
+   }
 
 //TODO 使用handler的思想
     @Override
@@ -71,14 +74,15 @@ public class IndexDelegate extends BottomItemDelegate {
                 Toast.makeText(_mActivity, image, Toast.LENGTH_SHORT).show();
             }
         }).build().get();*/
-       /* CallbackManager.getInstance()
+    /*二维码*/
+        CallbackManager.getInstance()
                 .addCallback(CallbackType.ON_SCAN, new IGlobalCallback<String>() {
                     @Override
                     public void executeCallback(@Nullable String args) {
                         Toast.makeText(getContext(), "得到的二维码是" + args, Toast.LENGTH_LONG).show();
                     }
                 });
-        mSearchView.setOnFocusChangeListener(this);*/
+       // mSearchView.setOnFocusChangeListener(this);
     }
     /*下拉刷新,在懒加载中进行调用*/
     private void initRefreshLayout() {
