@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 
 /**
  * Created by 傅令杰
+ * 点击增加数目-->贝塞尔曲线
  */
 
 public class CircleTextView extends AppCompatTextView {

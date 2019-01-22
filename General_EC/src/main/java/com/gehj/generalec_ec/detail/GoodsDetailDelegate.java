@@ -125,12 +125,12 @@ public class GoodsDetailDelegate extends LatteDelegate implements
 
     @Override
     public Object setLayout() {
-        return R.layout.delegate_goods_detail;
+        return R.layout.delegate_goods_detail; //TODO 对折叠toolbar学习;
     }
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        mCollapsingToolbarLayout.setContentScrimColor(Color.WHITE);
+        mCollapsingToolbarLayout.setContentScrimColor(Color.WHITE);//折叠toolbar折叠伸缩后变化的颜色设置;
         mAppBar.addOnOffsetChangedListener(this);
         mCircleTextView.setCircleBackground(Color.RED);
         initData();
@@ -153,7 +153,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements
 
     private void initData() {
         RestClient.builder()
-                .url("goods_detail.php")
+                .url("http://mock.eolinker.com/Vw4Pz6ib2c6ac93793e296a2d8acbb4e6ed0b424abea5ae?uri=/goodsdetail/")
                 .params("goods_id", mGoodsId)
                 .loader(getContext())
                 .success(new ISuccess() {
@@ -161,10 +161,10 @@ public class GoodsDetailDelegate extends LatteDelegate implements
                     public void onSuccess(String response) {
                         final JSONObject data =
                                 JSON.parseObject(response).getJSONObject("data");
-                        initBanner(data);
-                        initGoodsInfo(data);
-                        initPager(data);
-                        setShopCartCount(data);
+                        initBanner(data);//轮播
+                       // initGoodsInfo(data);
+                        //initPager(data);
+                       // setShopCartCount(data);
                     }
                 })
                 .build()
@@ -176,9 +176,9 @@ public class GoodsDetailDelegate extends LatteDelegate implements
         getSupportDelegate().
                 loadRootFragment(R.id.frame_goods_info, GoodsInfoDelegate.create(goodsData));
     }
-
+    /*轮播*/
     private void initBanner(JSONObject data) {
-        final JSONArray array = data.getJSONArray("banners");
+        final JSONArray array = data.getJSONArray("banner");
         final List<String> images = new ArrayList<>();
         final int size = array.size();
         for (int i = 0; i < size; i++) {
@@ -195,7 +195,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements
 
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-
+        /*折叠bar的事件监听 */
     }
 
     @Override

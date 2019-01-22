@@ -25,7 +25,7 @@ public class IndexItemClickListener extends SimpleClickListener {
     public static SimpleClickListener create(LatteDelegate delegate) {
         return new IndexItemClickListener(delegate);
     }
-
+    /*给详情页面传Id*/
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         final MultipleItemEntity entity = (MultipleItemEntity) baseQuickAdapter.getData().get(position);
