@@ -162,7 +162,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements
                         final JSONObject data =
                                 JSON.parseObject(response).getJSONObject("data");
                         initBanner(data);//轮播
-                       // initGoodsInfo(data);
+                        initGoodsInfo(data);//商品详情
                         //initPager(data);
                        // setShopCartCount(data);
                     }
