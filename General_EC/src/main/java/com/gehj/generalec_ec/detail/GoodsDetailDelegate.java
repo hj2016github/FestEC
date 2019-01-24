@@ -134,7 +134,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements
         mAppBar.addOnOffsetChangedListener(this);
         mCircleTextView.setCircleBackground(Color.RED);
         initData();
-        initTabLayout();
+        initTabLayout();//初始化tab
     }
 
     private void initPager(JSONObject data) {
